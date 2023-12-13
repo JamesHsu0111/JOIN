@@ -1,0 +1,986 @@
+﻿/* 字體 */
+/* 分支修改測試 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@200&family=Roboto:ital,wght@1,300&display=swap");
+
+/* "米字號"被用來選取HTML文檔中的所有元素 */
+* {
+    font-family: "Noto Sans TC", sans-serif;
+    font-family: "Roboto", sans-serif;
+    scroll-behavior: smooth;
+    /*當使用超連結時，頁面會平滑滾動到目標位置。 */
+}
+
+/* 主題顏色宣告 */
+:root {
+    --black: #000000;
+    --deepBlue: #14213d;
+    --blue: #416ac2;
+    --orange: #fca311;
+    --lightGray: #e5e5e5;
+    --white: #ffffff;
+    --brown: #ad7d52;
+    --heart: #b44163;
+    --lightBlue-bg: rgba(45, 68, 119, 0.486);
+}
+
+/* 頁面背景色 */
+body {
+    background-color: var(--deepBlue);
+    color: var(--white);
+}
+
+/* 導覽列 */
+.header {
+    background-color: var(--lightBlue-bg);
+}
+
+.navbar {
+    margin-left: 10%;
+    margin-right: 10%;
+    color: var(--white);
+    font-size: 1.75rem;
+    font-weight: bolder;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.navbar-item {
+    text-decoration: none;
+    color: var(--white);
+    margin-right: 1rem;
+}
+
+    .navbar-item:hover {
+        color: var(--orange);
+    }
+
+/* 懸浮方框 */
+.dropdown-content {
+    margin-top: 1rem;
+    display: none;
+    position: absolute;
+    padding: 10px;
+    z-index: 999;
+    padding: 1rem;
+}
+
+    .dropdown-content .row {
+        gap: 1rem;
+    }
+
+/* 圖片位址 */
+.dropdown-img-1::before {
+    background: url("https://picsum.photos/240/80?random=1");
+}
+
+.dropdown-img-2::before {
+    background-image: url("https://picsum.photos/240/80?random=2");
+}
+
+.dropdown-img-3::before {
+    background-image: url("https://picsum.photos/240/80?random=3");
+}
+
+.dropdown-img-4::before {
+    background-image: url("https://picsum.photos/240/80?random=4");
+}
+
+.dropdown-img-1,
+.dropdown-img-2,
+.dropdown-img-3,
+.dropdown-img-4 {
+    position: relative;
+    overflow: hidden;
+    transition: opacity 0.3s;
+}
+
+    .dropdown-img-1::before,
+    .dropdown-img-2::before,
+    .dropdown-img-3::before,
+    .dropdown-img-4::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        z-index: -1;
+        transition: all 0.3s;
+    }
+
+    .dropdown-img-1:hover::before,
+    .dropdown-img-2:hover::before,
+    .dropdown-img-3:hover::before,
+    .dropdown-img-4:hover::before {
+        opacity: 0.5;
+        transform: scale(1.25);
+    }
+
+.dropdown-content .col {
+    height: 60px;
+    width: 240px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    transition: border 0.3s ease;
+}
+
+    .dropdown-content .col:hover {
+        border: var(--lightGray) solid 2.5px;
+        box-shadow: 5px 5px 15px 0 rgba(129, 128, 128, 0.66);
+    }
+
+.dropdown-content a {
+    text-decoration: none;
+    color: var(--white);
+    font: 700;
+}
+
+    .dropdown-content a:hover {
+        transform: scale(1.2);
+        transition: all 0.3s ease;
+    }
+
+.nav-signin {
+    border: var(--orange) 2px solid;
+    padding: 2.5px 12.5px;
+    border-radius: 5px;
+    transition: all 0.1s ease;
+}
+
+    .nav-signin:hover {
+        background-color: var(--brown);
+        border: var(--orange) 2px solid;
+    }
+
+.singin-style {
+    text-decoration: none;
+    color: var(--orange);
+    transition: color 0.1s;
+}
+
+    .singin-style:hover {
+        color: var(--white);
+    }
+
+/* 搜尋框設計 */
+.searchInputWrapper {
+    position: relative;
+}
+
+.searchInput {
+    width: 18rem;
+    height: 2.5rem;
+    padding: 1rem;
+    border-radius: 2rem;
+    border: none;
+    transition: transform 0.1s ease-in-out;
+}
+
+    .searchInput::placeholder {
+        color: #7e5109;
+        font-size: 1.25rem;
+        opacity: 0.85;
+        font-weight: 600;
+    }
+
+    .searchInput:focus::placeholder {
+        text-indent: -999px;
+    }
+
+    .searchInput:focus {
+        outline: none;
+        transform: scale(1.1);
+        transition: all 0.1s ease-in-out;
+        transition: transform 0.2s ease;
+    }
+
+        .searchInput:focus + .searchInputIcon {
+            color: var(--orange);
+            transform: translateX(10px);
+        }
+
+.searchInputIcon {
+    position: absolute;
+    right: 0.8rem;
+    top: 0.5rem;
+    color: var(--deepBlue);
+    transition: all 0.1s ease-in-out;
+}
+
+.navbar-signin {
+    text-decoration: none;
+    color: var(--white);
+    background-color: var(--orange);
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+    .navbar-signin:hover {
+        color: var(--deepBlue);
+    }
+
+
+
+/* 鈴鐺+下拉 */
+.notification-wrapper {
+    position: relative;
+}
+
+button.notification {
+    position: relative;
+    /* margin-right: 1em; */
+    border-radius: 5px;
+    background: none;
+    border: none;
+}
+
+    button.notification i {
+        margin: 0.5rem;
+    }
+
+    button.notification span {
+        position: absolute;
+        user-select: none;
+        cursor: default;
+        font-size: 1rem;
+        background: var(--heart);
+        width: 1.5rem;
+        height: 1.5rem;
+        color: var(--white);
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        top: -0.33rem;
+        right: 0;
+        box-sizing: border-box;
+    }
+
+    button.notification:hover span {
+        animation-name: scaleCount;
+        animation-iteration-count: 1;
+        animation-timing-function: all;
+        animation-duration: 1s;
+        animation-delay: 0s;
+    }
+
+@keyframes scaleCount {
+    0% {
+        transform: scale(0);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+
+    60% {
+        transform: scale(0.5);
+    }
+
+    80% {
+        transform: scale(1.25);
+    }
+}
+
+.notification-popup {
+    display: none;
+    cursor: default;
+    font-weight: 300;
+    color: #000000;
+    position: absolute;
+    z-index: 999;
+    top: 56px;
+    right: 50%;
+    transform: translateX(1em);
+    width: 400px;
+    background: white;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    box-shadow: 0.5rem 0.5rem 2rem 0 rgba(247, 245, 245, 0.26);
+    animation-name: dropPanel;
+    animation-iteration-count: 1;
+    animation-timing-function: all;
+    animation-duration: 0.75s;
+}
+
+@keyframes dropPanel {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px) scaleY(0.5);
+    }
+}
+
+.notification-popup.active {
+    display: block;
+    overflow: hidden;
+}
+
+.notification-popup__header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #416ac22c;
+    border-bottom: 2px solid var(--lightGray);
+}
+
+    .notification-popup__header h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--black);
+        padding-left: 1rem;
+        padding-top: 1rem;
+    }
+
+    .notification-popup__header button {
+        float: right;
+        border: none;
+        background: none;
+    }
+
+        .notification-popup__header button i {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--blue);
+            padding-right: 1rem;
+            padding-top: 1rem;
+        }
+
+.notification-popup .popup-content {
+    padding-top: 3%;
+    border-bottom: var(--lightGray) solid 2px;
+    align-items: center;
+}
+
+    .notification-popup .popup-content .fa-newspaper {
+        padding-left: 7%;
+    }
+
+    .notification-popup .popup-content .notification-message {
+        text-align: left;
+    }
+
+    .notification-popup .popup-content h4 {
+        color: var(--deepBlue);
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .notification-popup .popup-content:hover {
+        border-bottom: #416ac2 2.5px solid;
+        border-top: #416ac2 2.5px solid;
+        cursor: pointer;
+    }
+
+    .notification-popup .popup-content span {
+        font-size: 1.25rem;
+        font-weight: 500;
+        margin: 0;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+/* 下拉 */
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    box-sizing: border-box;
+}
+
+.float-right {
+    float: right;
+}
+
+.fa {
+    font-size: 1em;
+    line-height: 22px !important;
+}
+
+dropdown {
+    display: inline-block;
+    margin: 150px 0px;
+}
+
+    dropdown label, dropdown ul li {
+        display: block;
+        width: 300px;
+        background: #ECF0F1;
+        padding: 15px 20px;
+        color: var(--heart);
+    }
+
+
+
+
+        dropdown label:hover, dropdown ul li:hover {
+            background: #fca311;
+            color: white;
+            cursor: pointer;
+        }
+
+    dropdown label {
+        color: #14213d;
+        /* border-left: 4px solid #1ABC9C; */
+        border-radius: 5px 5px 0 0;
+        position: relative;
+        z-index: 2;
+    }
+
+    dropdown input {
+        display: none;
+    }
+
+        dropdown input ~ ul {
+            position: relative;
+            visibility: hidden;
+            opacity: 0;
+            left: -32px;
+            top: -20px;
+            z-index: 1;
+        }
+
+
+.selectdate {
+    width: 300px;
+    height: 58px;
+    line-height: 30px;
+    padding-top: 12px;
+}
+
+
+
+
+
+
+
+dropdown input:checked + label {
+    background: #fca311;
+    color: white;
+}
+
+dropdown input:checked ~ ul {
+    visibility: visible;
+    opacity: 1;
+    top: 0;
+}
+
+dropdown ul li:nth-child(1) {
+    color: #14213d;
+    .fa
+
+{
+    display: none;
+}
+
+&:hover {
+    background: #fca311;
+    color: white;
+}
+
+}
+
+dropdown ul li:nth-child(2) {
+    color: #14213d;
+    .fa
+
+{
+    display: none;
+}
+
+&:hover {
+    background: #fca311;
+    color: white;
+}
+
+}
+
+dropdown ul li:nth-child(3) {
+    color: #14213d;
+    .fa
+
+{
+    display: none;
+}
+
+&:hover {
+    background: #fca311;
+    color: white;
+}
+
+}
+
+
+
+
+.NumberofpeopleA {
+    width: 100%; /* 使輸入元素寬度100% */
+    border-radius: 0 0 5px 5px;
+}
+
+.NumberofpeopleB {
+    width: 100%; /* 使輸入元素寬度100% */
+    border-radius: 0 0 5px 5px;
+}
+
+#other {
+    border-radius: 0 0 5px 5px;
+}
+
+
+
+
+@for $i from 1 through length($colors) {
+    dropdown ul li:nth-child(#{$i}) {
+        border-left: 4px solid nth($colors, $i);
+        .fa
+
+{
+    color: nth($colors, $i);
+}
+
+&:hover {
+    background: nth($colors, $i);
+    color: white;
+    .fa
+
+{
+    color: white;
+}
+
+}
+}
+}
+
+.animate {
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -ms-transition: all .3s;
+    transition: all .3s;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden; /* Chrome and Safari */
+    -moz-backface-visibility: hidden; /* Firefox */
+    -ms-backface-visibility: hidden; /* Internet Explorer */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 日曆 */
+@import url(https://fonts.googleapis.com/css?family=Muli:400);
+
+body {
+    margin-top: 0%;
+}
+
+.calendar, .calendar_weekdays, .calendar_content {
+    max-width: 300px;
+}
+
+.calendar {
+    margin: auto;
+    font-family: 'Muli', sans-serif;
+    font-weight: 400;
+}
+
+.calendar_content, .calendar_weekdays, .calendar_header {
+    position: relative;
+    overflow: hidden;
+}
+
+    .calendar_weekdays div {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .calendar_weekdays div, .calendar_content div {
+        width: 14.28571%;
+        overflow: hidden;
+        text-align: center;
+        background-color: transparent;
+        color: #6f6f6f;
+        font-size: 17px;
+    }
+
+    .calendar_content div {
+        border: 1px solid transparent;
+        float: left;
+        cursor: pointer;
+    }
+
+    .calendar_content ul {
+        cursor: alias;
+    }
+
+
+    .calendar_content div:hover {
+        border: 1px solid #dcdcdc;
+        cursor: default;
+    }
+
+    .calendar_content div.blank:hover {
+        cursor: default;
+        border: 1px solid transparent;
+    }
+
+    .calendar_content div.past-date {
+        color: #d5d5d5;
+    }
+
+    .calendar_content div.today {
+        font-weight: bold;
+        font-size: 17px;
+        color: var(--deepBlue);
+    }
+
+    .calendar_content div.selected {
+        background-color: #fca311;
+        color: #e5e5e5;
+    }
+
+.calendar_header {
+    width: 100%;
+    text-align: center;
+}
+
+    .calendar_header h2 {
+        padding: 0 10px;
+        font-family: 'Muli', sans-serif;
+        font-weight: 300;
+        font-size: 18px;
+        color: #fca311;
+        float: left;
+        width: 70%;
+        margin: 0 0 15px;
+    }
+
+button.switch-month {
+    background-color: transparent;
+    padding: 0;
+    outline: none;
+    border: none;
+    color: #fca311;
+    float: left;
+    width: 15%;
+    transition: color .2s;
+}
+
+    button.switch-month:hover {
+        color: #fca311;
+    }
+
+.my-element {
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 300px;
+    height: 220px;
+    border-radius: 0 0 10px 10px;
+    background-color: #e5e5e5;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* 相框 及 活動名稱/內容 */
+
+.custom-box {
+    background-color: var(--lightBlue-bg);
+    border-radius: 10px;
+    height: 400px;
+    margin-top: 10px;
+    min-height: 200px; /* 设置一个最小高度，以确保元素有足够的高度显示内容 */
+}
+
+.custom-box-inner {
+    padding: 20px; /* 添加内边距以分离内容和边缘 */
+}
+
+
+.Pbox {
+    background-color: #14213d;
+    border-radius: 10px;
+    margin-top: -450px;
+    min-height: 200px;
+    position: relative;
+}
+
+.custom-box {
+    padding: 20px;
+}
+
+.custom-button-container {
+    position: absolute;
+    bottom: 10px;
+    right: 685px;
+}
+
+
+
+
+
+
+
+
+
+.custom-button {
+    border-radius: 5px;
+    transition: background-color 0.1s, border 0.1s;
+    float: right;
+    margin-right: 5px;
+    background-color: var(--lightBlue-bgIO);
+    border: var(--orange) 2px solid;
+    color: var(--orange);
+    cursor: pointer;
+    /* font-weight: normal; */
+    border-radius: 5px;
+    padding: 5px 8px;
+}
+
+    .custom-button:hover {
+        background-color: var(--brown);
+        border: var(--orange) 2px solid;
+        color: var(--white);
+    }
+
+
+    .custom-button:nth-child(3),
+    .custom-button:nth-child(4) {
+        font-weight: bold;
+    }
+
+.submit {
+    border: var(--orange) 2px solid;
+    padding: 2.5px 12.5px;
+    border-radius: 5px;
+    transition: all 0.1s ease;
+    /* 添加過渡效果 */
+}
+
+    .submit:hover {
+        background-color: var(--brown);
+        border: var(--orange) 2px solid;
+    }
+
+
+
+.submit {
+    text-decoration: none;
+    color: var(--orange);
+    transition: color 0.1s;
+    /* 添加過渡效果 */
+}
+
+    .submit:hover {
+        color: var(--white);
+    }
+
+.submitBtn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 頁底設計 */
+footer {
+    margin-top: 5%;
+}
+
+.custom-btn {
+    margin: 1rem;
+    display: inline-block;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+    .custom-btn i {
+        font-size: 2rem;
+        color: var(--deepBlue);
+    }
+
+    .custom-btn:hover i {
+        color: var(--brown);
+    }
+
+
+/* 聯絡我們表單 */
+
+#contactDialog {
+    border-radius: 10px;
+    padding: 15px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-76%, -50%);
+    width: 33%;
+    max-height: 80vh;
+    background-color: var(--white);
+    /* 在這裡設置背景顏色 */
+    overflow: hidden;
+    /* 移除滾動條 */
+}
+
+    /* 調整內容置中 */
+    #contactDialog section {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: fit-content;
+    }
+
+#contactBox {
+    width: 100%;
+    text-align: center;
+}
+
+    #contactBox form {
+        text-align: center;
+    }
+
+        #contactBox form .input-box {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+            #contactBox form .input-box .input-field {
+                position: relative;
+                width: 49%;
+                margin: 0.3rem 0;
+            }
+
+                #contactBox form .input-box .input-field input,
+                #contactBox form .textarea-field textarea {
+                    width: 100%;
+                    padding: 0.4rem;
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    background: transparent;
+                    color: var(--deepBlue);
+                    border-radius: 5px;
+                    border: var(--deepBlue) 0.1rem solid;
+                }
+
+.submitText {
+    width: 90px;
+    height: 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    background: transparent;
+    color: var(--white);
+    border-radius: 15px;
+    margin-top: .7rem;
+    background-color: var(--deepBlue);
+}
+
+    .submitText:hover {
+        cursor: pointer;
+        border: var(--deepBlue) 0.1rem solid;
+        background-color: var(--white);
+        color: var(--deepBlue);
+    }
+
+#contactDialog .x-div {
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    border: solid 2px var(--deepBlue);
+    background-color: var(--lightGray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    transition: all .3s;
+}
+
+#closeDialogButton {
+    cursor: pointer;
+}
+
+#contactDialog .x-div:hover {
+    animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-1.5px);
+    }
+
+    50% {
+        transform: translateX(1.5px);
+    }
+
+    75% {
+        transform: translateX(-1.5px);
+    }
+}
+
+#contactBox form .input-box .input-field input::placeholder,
+#contactBox form .textarea-field textarea::placeholder {
+    color: gray;
+    font-size: 1.2rem;
+}
+
+#contactBox form .textarea-field textarea {
+    resize: none;
+}

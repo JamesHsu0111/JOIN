@@ -1,0 +1,193 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+
+    <!-- css連結，確保在Bootsrap之下 -->
+    <!-- 引入 Bootstrap 的 JavaScript 和相依的 Popper.js 和 jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+    <!-- navbar -->
+    <title>JO!N</title>
+    <link rel="icon" href="~/IMG/小黃人.png" type="image/png" />
+
+    <!-- Font Awesome套件引入 -->
+    <script src="https://kit.fontawesome.com/2bfbd4ef35.js" crossorigin="anonymous"></script>
+
+
+    <!-- 引入 Bootstrap 的 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+
+    <!-- css連結，確保在Bootsrap之下 -->
+    
+
+   
+
+
+    <!-- 引入 Bootstrap 的 JavaScript 和相依的 Popper.js 和 jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- moving letter特效引入 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+    <!-- 照片要的 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://foliotek.github.io/Croppie/croppie.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://foliotek.github.io/Croppie/croppie.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="~/css/MemberUse/profile.css" rel="stylesheet">
+
+</head>
+
+<body>
+   @*  <!-- 導覽列設計 -->
+    <div class="header">
+        <div class="row navbar justify-content-between">
+            <div class="col-auto">
+                <a class="navbar-item" asp-controller="myactivity" asp-action="HomePage">
+                    <img src="~/IMG/標誌.png" alt="logo" id="logo" width="200" height="60" />
+                </a>
+            </div>
+
+            <!-- 通知下拉 -->
+            <div class="col-auto">
+                <div class="row">
+                    <div class="col-auto">
+                        <ul class="nav nav-pills nav-justified">
+                            <li class="nav-item notification-wrapper">
+                                <button class="notification">
+                                    <i class="fa-solid fa-bell fa-lg" style="color: #ffffff;"></i>
+                                    <span class="notification--num">3</span>
+                                </button>
+                                <div class="notification-popup">
+                                    <div class="notification-popup__header">
+                                        <h3>通知</h3>
+                                        <button><i class="fa-solid fa-check read-all"> 全部已讀</i></button>
+                                    </div>
+                                    <div class="popup-content row">
+                                        <i class="fa-solid fa-circle col-1 notification-dot"
+                                           style="color: #0860f7; font-size: 0.3em;"></i>
+                                        <i class="fa-regular fa-newspaper col-2"></i>
+                                        <div class="notification-message col-9">
+                                            <h4>活動開團啦! 請選擇日期</h4>
+                                            <span class="notified-date">5小時前</span>
+                                        </div>
+                                    </div>
+                                    <div class="popup-content row">
+                                        <i class="fa-solid fa-circle col-1 notification-dot"
+                                           style="color: #0860f7; font-size: 0.3em;"></i>
+                                        <i class="fa-regular fa-newspaper col-2"></i>
+                                        <div class="notification-message col-7">
+                                            <h4>A活動有新留言!</h4>
+                                            <span class="notified-date">1天前</span>
+                                        </div>
+                                    </div>
+                                    <div class="popup-content row">
+                                        <i class="fa-solid fa-circle col-1 notification-dot"
+                                           style="color: #0860f7; font-size: 0.3em;"></i>
+                                        <i class="fa-regular fa-newspaper col-2"></i>
+                                        <div class="notification-message col-7">
+                                            <h4>有人回覆了你的留言</h4>
+                                            <span class="notified-date">1天前</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-auto">
+                        <!-- 會員中心 -->
+                        <div class="nav-signed">
+                            <a class="singed-style" asp-controller="member" asp-action="member">會員中心</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <breadcrumb></breadcrumb>
+ *@
+
+    <!-- 內容開始 -->
+    <div class="container">
+        <div class="row"></div>
+
+        <div class="row dora">
+            <!-- A區塊 -->
+            <div class="col-3">
+
+                <div class="container">
+                    <div class="doratry">
+                    <!-- A2下半部：列表 -->
+                    <div class="A2-lower">
+                        <div class="menu-item-container">
+                            <a href="/Member/LikeRecord" class="menu-item" data-content="likeit">投票中活動</a>
+                        </div>
+                        <div class="menu-item-container">
+                            <a href="/Member/Registration" class="menu-item" data-content="activity">報名中活動</a>
+                        </div>
+                        <div class="menu-item-container">
+                            <a href="/Member/Member" class="menu-item" data-content="settings">個人資料</a>
+                        </div>
+                        <div class="menu-item-container">
+                            <a href="/Member/MyGroups" class="menu-item" data-content="delete">個人揪團</a>
+                        </div>
+                            @{
+                                var UserID = Context.Session.GetString("UserId");
+                                if (UserID == "7") 
+                                {
+                                    <div class="menu-item-container">
+                                        <a href="/Member/Admin" class="menu-item" data-content="admin" id="adminBtn">管理員專區</a>
+                                    </div>
+                                }
+                            }
+                    </div>
+                        </div>
+                </div>
+
+            </div>
+
+            <!-- B區塊 -->
+            <div class="col-7">
+
+                @RenderBody()
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+  
+    
+
+
+
+  
+    <script src="~/js/MemberUse/profile.js"></script>
+
+
+</body>
+
+</html>

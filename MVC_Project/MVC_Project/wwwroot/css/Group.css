@@ -1,0 +1,260 @@
+﻿/* 字體 */
+/* 分支修改測試 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@200&family=Roboto:ital,wght@1,300&display=swap");
+
+/* "米字號"被用來選取HTML文檔中的所有元素 */
+* {
+    font-family: "Noto Sans TC", sans-serif;
+    font-family: "Roboto", sans-serif;
+    scroll-behavior: smooth;
+    /*當使用超連結時，頁面會平滑滾動到目標位置。 */
+}
+
+/* 主題顏色宣告 */
+:root {
+    --black: #000000;
+    --deepBlue: #14213d;
+    --blue: #416ac2;
+    --orange: #fca311;
+    --lightGray: #e5e5e5;
+    --white: #ffffff;
+    --brown: #ad7d52;
+    --heart: #b44163;
+    --lightBlue-bg: rgba(45, 68, 119, 0.486);
+}
+
+/* 頁面背景色 */
+body {
+    background-color: var(--deepBlue);
+    color: var(--white);
+}
+
+/*讓提示訊息撐高*/
+.login-warning {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36vh;
+    color: var(--white);
+
+}
+
+.login-warning-icon-color {
+    color: var(--orange);
+}
+/*Moving Letter*/
+.ml6 {
+    position: relative;
+    font-weight: 600;
+    font-size: 2.3em;
+}
+
+    .ml6 .text-wrapper {
+        position: relative;
+        display: inline-block;
+        padding-top: 0.2em;
+        padding-right: 0.05em;
+        padding-bottom: 0.1em;
+        overflow: hidden;
+    }
+
+    .ml6 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-container {
+    margin: auto;
+    max-width: 600px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+
+
+
+
+
+.submit {
+    border: var(--orange) 2px solid;
+    padding: 2.5px 15.5px;
+    border-radius: 5px;
+    transition: all 0.1s ease; /* 添加過渡效果 */
+    position: absolute;
+    text-decoration: none;
+    color: var(--orange);
+    font-size: 30px; /* 調整字體大小 */
+}
+
+    .submit:hover {
+        background-color: var(--brown);
+        border: var(--orange) 2px solid;
+        color: var(--white);
+    }
+
+.bnt1 {
+    border: var(--orange) 2px solid;
+    padding: 2.5px 15.5px;
+    border-radius: 5px;
+    transition: all 0.1s ease; /* 添加過渡效果 */
+    background-color: var(--lightBlue-bg);
+    text-decoration: none;
+    color: var(--orange);
+    font-size: 15px; /* 調整字體大小 */
+}
+
+    .bnt1:hover {
+        background-color: var(--brown);
+        border: var(--orange) 2px solid;
+        color: var(--white);
+    }
+
+
+
+.bnt1 {
+    border: var(--orange) 2px solid;
+    padding: 2.5px 15.5px;
+    border-radius: 5px;
+    transition: all 0.1s ease; /* 添加過渡效果 */
+    background-color: var(--lightBlue-bg);
+    text-decoration: none;
+    color: var(--white);
+    font-size: 14px; /* 調整字體大小 */
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+    .bnt1:hover {
+        background-color: var(--brown);
+        border: var(--orange) 2px solid;
+        color: var(--white);
+    }
+
+
+.BtnMove {
+    margin-top: 30px; /* 距離上方50px */
+    margin-left: 80px;
+}
+
+.photos {
+    position: relative;
+    width: 450px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(45, 68, 119, 0.486);
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
+
+#photosPreview img {
+    margin-bottom: 35px; /* 用正數來把照片往上推 */
+}
+
+
+.action-buttons {
+    position: absolute;
+   top: 250px;
+   left: 33px;
+    display: flex;
+    align-items: center;
+}
+
+    .action-buttons button {
+        margin-right: 15px;
+    }
+
+.file-input {
+    position: absolute;
+   left: 10px;
+   bottom: -250px;
+    
+}
+
+/* 活動內容的高度 */
+.form-group textarea {
+    height: 5em; /* 設定高度為五排 */
+}
+
+/* 置中 container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/*右邊*/
+.wide-column {
+    flex: 0 0 66.66667%; /* 將左側欄位設置為更寬 */
+    max-width: 66.66667%;
+}
+
+.narrow-column {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+}
+
+.group-name-input, .group-content-input {
+    width: 450px; /* 設定寬度 */
+}
+
+.group-content-input {
+    height: 200px; /* 設定高度 */
+}
+
+/*左邊*/
+.row-aligned {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch; /* 確保所有子元素的高度一致 */
+}
+
+.col-aligned {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 在這個高度內平均間隔 */
+}
+
+.group-name-input, .group-content-input {
+    width: 450px; /* 設定寬度 */
+}
+
+.group-content-input {
+    height: 200px; /* 設定高度 */
+}
+
+
+
+.move-left-row {
+    margin-left: -250px !important;
+}
+
+
+/*頁底的聯絡我們表單彈出設計(齊澤加的)*/
+#contactDialog {
+    margin-top: .7%;
+}
+
+#contactDialog::backdrop {
+    /* 設定模糊半徑，調整數值以達到所需的效果 */
+    backdrop-filter: blur(10px);
+    /* 背景透明度 */
+    opacity: 1;
+}
+
+/*按鈕排序*/

@@ -1,0 +1,144 @@
+@model MVC_Project.Models.Group
+
+@* 查找目前使用者 *@
+@using Microsoft.AspNetCore.Http
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+@{
+    var photos = ViewData["Photos"] as List<PersonalPhoto>;
+}
+
+
+<!-- css連結 -->
+<link rel="stylesheet" href="~/css/Group.css" />
+
+@* Moving letter *@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+@* SweetAlert2 *@
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<div class="container">
+    <h1 class="mt-5 fw-bold">個人揪團表單</h1>
+    @if (@Context.Session.GetString("UserId") == null)
+    {
+        <h1 class="ml6">
+            <a style="text-decoration: none;" asp-action="login" asp-controller="home">
+            <span class="text-wrapper">
+                <span class="letters login-warning">請登入</span>
+            </span>
+            <span class="text-wrapper">
+                <span class="letters login-warning login-warning-icon-color"><i class="fa-solid fa-location-arrow"></i></span>
+            </span>
+            </a>
+        </h1>
+    }
+    else
+    {
+        <div class="row row-aligned justify-content-center move-left-row">
+            <div class="col-md-12 GroupForm">
+                <form id="catdog" asp-action="Create" method="post" enctype="multipart/form-data" onsubmit="return submitForm(this);">
+                    <input type="hidden" asp-for="Organizer" value="@Context.Session.GetString("UserId")" />
+                    <input type="hidden" asp-for="GroupID" />
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row row-aligned">
+                        <div class="col-md-8 wide-column col-aligned">
+                            <!-- Left Column -->
+                            <div class="form-group">
+                                <label asp-for="GroupCategory" class="control-label pb-2" style="font-size: 30px;" >請選擇活動類別</label>
+                                <select asp-for="GroupCategory" class="form-control">
+                                    <option value="" disabled selected>點擊後選擇</option>
+                                    <option value="登山">登山</option>
+                                    <option value="潛水">潛水</option>
+                                    <option value="露營">露營</option>
+                                    <option value="溯溪">溯溪</option>
+                                    <option value="其他">其他</option>
+                                </select>
+                                <span asp-validation-for="GroupCategory" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MinAttendee" class="control-label pb-2" style="font-size: 30px;">請輸入人數下限</label>
+                                <input asp-for="MinAttendee" class="form-control" placeholder="建議下限人數3人"  />
+                                <span asp-validation-for="MinAttendee" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MaxAttendee" class="control-label pb-2" style="font-size: 30px;">請輸入人數上限</label>
+                                <input asp-for="MaxAttendee" class="form-control" placeholder="建議上限人數10人"  />
+                                <span asp-validation-for="MaxAttendee" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="StartDate" class="control-label pb-2" style="font-size: 30px;">請選擇起始日</label>
+                                <input type="date" asp-for="StartDate" class="form-control"  />
+                                <span asp-validation-for="StartDate" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="EndDate" class="control-label pb-2" style="font-size: 30px;">請選擇結束日</label>
+                                <input type="date" asp-for="EndDate" class="form-control"  />
+                                <span asp-validation-for="EndDate" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 narrow-column">
+                            <!-- Right Column -->
+                            <div class="form-group pb-2">
+                                <div class="photos">
+                                    <div class="action-buttons">
+                                        <input type="file" name="ImageDataFiles" style="display: none;" id="ImageData" class="file-input form-control-file QQ" accept="image/*" multiple />
+                                        <label for="ImageData" class="bnt1">選擇照片</label>
+                                        <button type="button" id="deleteImage" class="bnt1">刪除這張</button>
+                                        <button type="button" id="prevImage" class="bnt1">上一張</button>
+                                        <button type="button" id="nextImage" class="bnt1">下一張</button>
+                                    </div>
+                                    <div id="photosPreview">
+                                        @if (photos != null)
+                                        {
+                                            foreach (var photo in photos)
+                                            {
+                                                var base64 = Convert.ToBase64String(photo.PhotoData);
+                                                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                                <img src="@imgSrc" alt="Personal Photo" style="width: 300px; height: 200px;" />
+                                            }
+                                        }
+                                        </div>
+                                    <div id="imageLabel" style="position: absolute; top: 10px; left: 10px; color: white; font-size: 16px ;">第n張</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="GroupName" class="control-label pb-2" style="font-size: 30px;">請輸入活動名稱</label>
+                                <input asp-for="GroupName" class="form-control group-name-input" placeholder="例: 眠月線三日遊"  />
+                                <span asp-validation-for="GroupName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="GroupContent" class="control-label pb-2" style="font-size: 30px;">請輸入活動內容</label>
+                                <textarea asp-for="GroupContent" class="form-control group-content-input" placeholder="例: 先抵達阿里山森林遊樂區，再..." ]"></textarea>
+                                <span asp-validation-for="GroupContent" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-right:8px">
+                        <div class="col-md-12 text-center BtnMove">
+                            <div class="form-group">
+                                <input type="submit" value="@((Model.GroupID == 0) ? "提交" : "更新")" class="btn submit fw-bold" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+</div>
+<!-- JS連結 -->
+<script src="~/js/Group.js"></script>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

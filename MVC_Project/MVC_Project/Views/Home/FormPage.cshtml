@@ -1,0 +1,356 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JO!N</title>
+    <link rel="icon" href="~/IMG/小黃人.png" type="image/png" />
+
+    <!-- Font Awesome套件引入 -->
+    <script src="https://kit.fontawesome.com/2bfbd4ef35.js" crossorigin="anonymous"></script>
+
+
+    <!-- 引入 Bootstrap 的 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+
+    <!-- css連結 -->
+    <link rel="stylesheet" href="~/css/FormPage.css" />
+
+    <!-- 引入 Bootstrap 的 JavaScript 和相依的 Popper.js 和 jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+</head>
+
+<body>
+    <!-- 導覽列設計 -->
+    <div class="header">
+        <div class="row navbar justify-content-between">
+            <div class="col-auto">
+                <a class="navbar-item" href="#" id="home">
+                    <img src="~/IMG/標誌.png" alt="logo" id="logo" width="200" height="60" />
+                </a>
+            </div>
+            <div class="col-auto">
+                <a class="navbar-item" href="#" id="explore-link">
+                    探索
+                    <i id="downicon" class="fa-sharp fa-solid fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content" id="explore-dropdown">
+                    <div class="row">
+                        <div class="col dropdown-img-1">
+                            <a href="#">登山</a>
+                        </div>
+                        <div class="col dropdown-img-2">
+                            <a href="#">溯溪</a>
+                        </div>
+                        <div class="col dropdown-img-3">
+                            <a href="#">潛水</a>
+                        </div>
+                        <div class="col dropdown-img-4">
+                            <a href="#">露營</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-auto">
+                <a class="navbar-item" id="group-link" href="#">發起揪團</a>
+            </div>
+            <div class="col">
+                <!-- 填充空間 -->
+            </div>
+            <div class="col-auto">
+                <div class="searchInputWrapper">
+                    <input class="searchInput" type="text" placeholder='搜尋...'>
+                    <i class="searchInputIcon fa fa-search"></i>
+                </div>
+            </div>
+
+            <!-- 通知下拉 -->
+            <div class="col-auto">
+                <ul class="nav nav-pills nav-justified">
+
+                    <li class="nav-item notification-wrapper">
+                        <button class="notification">
+                            <i class="fa-solid fa-bell" style="color: #ffffff;"></i>
+                            <span class="notification--num">6</span>
+                        </button>
+                        <div class="notification-popup">
+                            <div class="notification-popup__header">
+                                <h3>通知</h3>
+                                <button><i class="fa-solid fa-check"> 全部已讀</i></button>
+                            </div>
+                            <div class="popup-content row">
+                                <i class="fa-regular fa-newspaper col-2"></i>
+                                <div class="notification-message col-7">
+                                    <h4>活動開團啦!</h4>
+                                    <span>請選擇日期</span>
+                                </div>
+                                <i class="fa-solid fa-check col-2"></i>
+                            </div>
+                            <div class="popup-content row">
+                                <i class="fa-regular fa-newspaper col-2"></i>
+                                <div class="notification-message col-7">
+                                    <h4>活動開團啦!</h4>
+                                    <span>請選擇日期</span>
+                                </div>
+                                <i class="fa-solid fa-check col-2"></i>
+                            </div>
+                            <div class="popup-content row">
+                                <i class="fa-regular fa-newspaper col-2"></i>
+                                <div class="notification-message col-7">
+                                    <h4>活動開團啦!</h4>
+                                    <span>請選擇日期</span>
+                                </div>
+                                <i class="fa-solid fa-check col-2"></i>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 會員中心 -->
+            <div class="col-auto nav-signin">
+                <a class="singin-style" href="#">會員中心</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- 選單 -->
+    <div class="container dropdownALL">
+        <div class="row ">
+            <div class="col-md-3">
+                <dropdown class="A">
+                    <input id="toggle1" type="checkbox" >
+                    <label for="toggle1" class="animate" style="font-size: 20px;">選擇活動類別<i
+                            class="fa fa-bars float-right"></i></label>
+                    <ul class="animate">
+                        <li class="animate" style="font-size: 20px; ">露營<i class="fa  float-right"></i></li>
+                        <li class="animate" style="font-size: 20px; ">登山<i class="fa  float-right"></i></li>
+                        <li class="animate" style="font-size: 20px; ">潛水<i class="fa  float-right"></i></li>
+                        <li class="animate" style="font-size: 20px; ">溯溪<i class="fa  float-right"></i></li>
+                        <li class="animate" style="font-size: 20px; " id="other">其他<i class="fa  float-right"></i></li>
+                    </ul>
+                </dropdown>
+            </div>
+            <div class="col-md-3">
+                <div id="selected-date">
+                    <div id="selected-range">
+                        <dropdown class="date" id="dateRangeDisplay">
+                            <input id="toggle3" type="checkbox">
+                            <label for="toggle3" class="selectdate" style="font-size: 20px;">選擇日期<i
+                                    class="fa fa-bars float-right"></i></label>
+                            <ul class="animate">
+                                <div class="my-element">
+                                    <div class="calendar calendar-first" id="calendar_first">
+                                        <div class="calendar_header">
+                                            <button class="switch-month switch-left"> <i
+                                                    class="fa fa-chevron-left"></i></button>
+                                            <h2></h2>
+                                            <button class="switch-month switch-right"> <i
+                                                    class="fa fa-chevron-right"></i></button>
+                                        </div>
+                                        <div class="calendar_weekdays"></div>
+                                        <div class="calendar_content"></div>
+                                    </div>
+                                </div>
+                            </ul>
+                        </dropdown>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <dropdown class="B">
+                    <input id="toggle2" type="checkbox">
+                    <label for="toggle2" class="CC" style="font-size: 20px; ">輸入人數下限<i
+                            class="fa fa-bars float-right"></i></label>
+                    <ul class="animate">
+                        <input class="form-control form-control-lg NumberofpeopleA" id="inputA" type="text"
+                            placeholder="建議下限人數3人" aria-label=".form-control-lg example"
+                            style="width: 300px; font-size: 25px;">
+                    </ul>
+                </dropdown>
+            </div>
+            <div class="col-md-3">
+                <dropdown class="C">
+                    <input id="toggle4" type="checkbox">
+                    <label for="toggle4" class="CC" style="font-size: 20px;">輸入人數上限<i
+                            class="fa fa-bars float-right"></i></label>
+                    <ul class="animate">
+                        <input class="form-control form-control-lg NumberofpeopleB" id="inputB" type="text"
+                            placeholder="建議上限人數10人" aria-label=".form-control-lg example"
+                            style="width: 300px; font-size: 25px;">
+                    </ul>
+                </dropdown>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="container">
+        <!-- 選擇照片跟 活動內容 -->
+        <div class="row row8  Pbox">
+            <div class="col-md-6">
+                <div class="customA">
+                    <div class="custom-box">
+                        <div class="custom-button-container">
+                            <button class="custom-button " style="font-size: 23px;">增加相片</button>
+                            <button class="custom-button " style="font-size: 23px;">刪除</button>
+                            <button class="custom-button " style="font-size: 23px;">&gt;</button>
+                            <button class="custom-button " style="font-size: 23px;">&lt;</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="Eventname">
+                    <form id="inputForm">
+                        <div class="form-group">
+                            <label for="title" style="font-size: 35px;">活動名稱 </label>
+                            <input type="text" id="title" class="form-control" style="font-size: 20px;"
+                                placeholder="例 : 眠月線3日遊">
+                        </div>
+                        <div class="form-group">
+                            <label for="content" style="font-size: 35px;">活動內容</label>
+                            <textarea class="form-control" id="content" rows="5" style="font-size: 20px;"
+                                placeholder="除了內容也可以提醒 例:經常下雨可以帶雨衣"></textarea>
+                        </div>
+                    </form>
+                    <div class="submitBtn">
+                        <a class="submit" href="#" style="font-size: 35px;">提交</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 頁底設計 -->
+    <footer class="text-center text-white" style="background-color: var(--white)">
+        <div class="container pt-4">
+            <section class="mb-4">
+                <span style="color: var(--black); font-size: 1.25rem;font-weight: bold;">聯絡我們<i
+                        class="fa-solid fa-caret-right"></i></span>
+                <!-- Facebook -->
+                <a class="custom-btn" href="#!">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <!-- Twitter -->
+                <a class="custom-btn" href="#!">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+
+                <!-- Instagram -->
+                <a class="custom-btn" href="#!">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <!-- Github -->
+                <a class="custom-btn" href="#!">
+                    <i class="fab fa-github"></i>
+                </a>
+                <!-- Contact Us-->
+                <a class="custom-btn contactIcon" id="showContactButton">
+                    <i class="fa-solid fa-envelope-open-text contactIcon"></i>
+                </a>
+
+                <!-- 表單Dialog -->
+                <div class="formOuter-div">
+                    <dialog id="contactDialog">
+                        <div class="x-div">
+                            <i id="closeDialogButton" class="fa-solid fa-xmark"></i>
+                        </div>
+                        <section id="contactBox">
+                            <form>
+                                <div class="input-box">
+                                    <div class="input-field">
+                                        <input type="text" name="fullName" id="name" placeholder="您的全名"
+                                            pattern="^[\u4e00-\u9fa5]{2,4}$" required>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="email" name="mail" id="email" placeholder="Email"
+                                            pattern="^[a-zA-Z0-9._%+-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required>
+                                    </div>
+                                </div>
+
+                                <div class="input-box">
+                                    <div class="input-field">
+                                        <input type="tel" name="mobileNumber" id="mobileNumber"
+                                            placeholder="手機號碼 (格式：10碼)" pattern="[0-9]{10}" maxlength="10" required
+                                            title="請輸入10位數字手機號碼(TW)">
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="text" name="emailSubject" id="emailSubjest" placeholder="Email標題"
+                                            required>
+                                    </div>
+                                </div>
+
+                                <div class="textarea-field">
+                                    <textarea name="wrotetext" id="message" cols="15" rows="10" placeholder="您的訊息...."
+                                        required></textarea>
+                                </div>
+
+                                <div>
+                                    <input type="submit" class="submitText" value="傳送">
+                                </div>
+                            </form>
+                        </section>
+                    </dialog>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- Copyright -->
+        <div class="text-center text-dark p-3"
+            style="background-color: var(--lightGray); font-size: 1.2rem;font-weight: 600;">
+            <p style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Copyright © 2023 JO!N Inc. | 保留一切權利。
+            </p>
+        </div>
+    </footer>
+
+    <!-- JS連結 -->
+    <script src="~/js/FormPage.js"></script>
+</body>
+
+</html>

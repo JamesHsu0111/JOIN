@@ -1,0 +1,18 @@
+﻿@model MVC_Project.Models.Group
+
+@* 查找目前使用者 *@
+@using Microsoft.AspNetCore.Http
+
+
+<p value="測試">@Model.GroupName</p>
+
+
+<form asp-action="myUpdate" asp-controller="Groups" method="post">
+    <input type="hidden" asp-for="GroupID" />
+    <div class="form-group">
+        <label asp-for="GroupName"></label>
+        <input asp-for="GroupName" class="form-control" />
+    </div>
+
+    <button type="submit">保存</button>
+</form>

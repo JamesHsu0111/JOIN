@@ -1,0 +1,119 @@
+﻿@model List<MemberUseViewModel>
+
+@{
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<div class="container" id="likeR">
+    <div class="row row-cols-2">
+        @foreach (var group in ViewBag.RegisteredGroups)
+        {
+            <div class="col">
+                <div class="card my-3">
+                    <div class="card-body"> 
+                        <h3 class="card-title"><a href="/Grouppage/grouppage/@group.GroupID">@group.GroupName</a></h3>
+                        <p class="card-text">出團日期:@group.EndDate?.ToString("yyyy-MM-dd")</p>
+                        <div class="card-button-container">
+                            <button class="blue-btn blue-btn-text-style delete-btn" data-id="@group.RegistrationID">
+                                取消報名
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+<div class="container">
+    <nav aria-label="Page navigation example" id="nav-page">
+        <ul class="pagination justify-content-center" id="nav-pagi">
+            <li class="page-item @(ViewBag.PageNumber == 1 ? "disabled" : "")">
+                <a class="page-link" href="@Url.Action("Registration", "Member", new { page = ViewBag.PageNumber - 1 })" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                <li class="page-item @(i == ViewBag.PageNumber ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Registration", "Member", new { page = i })">@i</a>
+                </li>
+            }
+
+            <li class="page-item @(ViewBag.PageNumber == ViewBag.TotalPages ? "disabled" : "")">
+                <a class="page-link" href="@Url.Action("Registration", "Member", new { page = ViewBag.PageNumber + 1 })" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+@* <div class="container">
+    <div class="row row-cols-2">
+        @foreach (var group in ViewBag.registeredGroups)
+        {
+            <div class="col">
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h3 class="card-title">@group.GroupName</h3>
+                        <p class="card-text">出團日期:@group.EndDate?.ToString("yyyy-MM-dd")</p>
+                        <div class="card-button-container">
+                            <button class="blue-btn blue-btn-text-style delete-btn" data-id="@group.RegistrationID">
+                                取消報名
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div> *@
+
+
+<script>
+    $('.delete-btn').click(function () {
+        var id = $(this).data('id');
+
+        swal({
+            title: "確定要取消報名嗎？",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.post("/Member/DeleteRegistration", { RegistrationID: id }, function () {
+                        swal({
+                            title: "成功！",
+                            text: "已成功刪除紀錄！",
+                            icon: "success",
+                            buttons: false,  // 隱藏按鈕
+                            timer: 1000,  // 1秒後自動關閉
+                            timerProgressBar: true
+                        }).then(() => {
+                            location.reload();
+                        });
+                    })
+                        .fail(function () {
+                            swal({
+                                title: "錯誤！",
+                                text: "刪除過程中發生錯誤！",
+                                icon: "error",
+                                buttons: false,  // 隱藏按鈕
+                                timer: 1000,  // 1秒後自動關閉
+                                timerProgressBar: true
+                            });
+                        });
+                } else {
+                    location.reload();
+                }
+            });
+    });
+
+
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

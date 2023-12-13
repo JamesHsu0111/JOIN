@@ -1,0 +1,452 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@200&family=Roboto:ital,wght@1,300&display=swap");
+
+
+*{
+    font-family: "Noto Sans TC", sans-serif;
+    font-family: "Roboto", sans-serif;
+}
+
+/*James加的*/
+.navbar {
+    margin-left: 10%;
+    margin-right: 10%;
+    color: var(--white);
+    font-size: 1.75rem;
+    font-weight: bolder;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+/*:root {
+/* 主題顏色宣告 */
+:root {
+    --black: #000000;
+    --deepBlue: #14213d;
+    --blue: #416ac2;
+    --orange: #fca311;
+    --lightGray: #e5e5e5;
+    --white: #ffffff;
+    --brown: #AD7D52;
+    --heart: #B44163;
+    --lightBlue-bg: rgba(45, 68, 119, 0.486);
+}
+
+/* 頁面背景色 */
+body {
+    background-color:var(--deepBlue)
+}
+
+/*麵包屑*/
+nav {
+    padding-left: 15%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: var(--lightBlue-bg)
+}
+
+    nav a {
+        text-decoration: none;
+        color: var(--white)
+    }
+
+        nav a:hover {
+            color: var(--orange);
+        }
+
+    nav ol li:last-child {
+        color: var(--orange)
+    }
+
+/* main裡面有card class */
+.card-ex {
+    transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+    background-color: #fff;
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+}
+
+    .card-ex:hover {
+        box-shadow: 0px 30px 40px -8px rgba(244, 242, 242, 0.466);
+        transform: scale(1.10, 1.10);
+    }
+
+.card-img {
+    background-image: var(--black);
+}
+
+.dora {
+    /* align-items: center; */
+    padding: 20px;
+}
+
+
+.item {
+    display: flex;
+    border: 1px solid;
+}
+
+.border-success {
+    background-color: var(--deepBlue)
+}
+
+
+
+.profile-pic-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 33%;
+}
+
+.profile-pic {
+    border-radius: 50%;
+    max-width: 80%;
+    height: auto;
+}
+
+
+
+
+.A2-lower {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+    padding-top: 10px;
+    width: 100%;
+    justify-content: normal;
+    height: 250px;
+    font-family: "Noto Sans TC", sans-serif;
+    font-family: "Roboto", sans-serif;
+    font-size: 2rem;
+    /* 你可以根據需要調整這個值 */
+}
+
+
+.menu-item {
+    border: 4px var(--white);
+    border-bottom-style: solid;
+    display: block;
+    background-color: var(--deepBlue);
+    border: 1px solid var(#e5e5e5);
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--white);
+    transition: background-color 0.3s, transform 0.3s;
+    width: 80%;
+    margin: 0 auto;
+    /* 上下邊距設為0，左右邊距自動，使元素在容器中水平居中 */
+    box-sizing: border-box;
+    border-radius: 0px;
+    /* 或其他你希望的圓角大小 */
+}
+
+    .menu-item:hover {
+        background-color: #e0e0e0;
+        transform: scale(1.05);
+    }
+
+    .menu-item:active {
+        background-color: #d0d0d0;
+        transform: scale(1);
+    }
+
+/* 我在這裡搞了一條線，chatGPT用了個偽元素 */
+
+.profile-section {
+    /* ... 其他原本的樣式 ... */
+    position: relative;
+    /* 設置為 relative 以便於定位偽元素 */
+}
+
+    .profile-section::after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        /* 調整位置，使其下移10px */
+        left: 10%;
+        /* 讓線從左邊25%的位置開始，使其短一些 */
+        right: 10%;
+        /* 讓線在右邊25%的位置結束 */
+        height: 1px;
+        background-color: #ccc;
+    }
+
+
+/* 這邊開始設計B2 */
+
+
+.card-button-container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+}
+
+.card-title::before {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    /* 調整位置，使其下移10px */
+    left: 10%;
+    /* 讓線從左邊25%的位置開始，使其短一些 */
+    right: 10%;
+    /* 讓線在右邊25%的位置結束 */
+    height: 1px;
+    background-color: #ccc;
+}
+
+.card {
+    height: 150px;
+}
+
+/* 照片 */
+label.cabinet {
+    display: block;
+    cursor: pointer;
+}
+
+    label.cabinet input.file {
+        position: relative;
+        height: 100%;
+        width: auto;
+        opacity: 0;
+        opacity: 0;
+        margin-top: -30px;
+    }
+
+#upload-demo {
+    width: 250px;
+    height: 250px;
+    padding-bottom: 25px;
+}
+
+figure figcaption {
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+    width: 100%;
+    padding-left: 9px;
+    padding-bottom: 5px;
+    text-shadow: 0 0 10px #000;
+}
+
+
+/* 文字設計 */
+.org-btn {
+    width: fit-content;
+    border: var(--orange) 2px solid;
+    padding: 2.5px 12.5px;
+    border-radius: 5px;
+    transition: all 0.1s ease;
+    background-color:var(--deepBlue);
+}
+
+    .org-btn:hover {
+        background-color: var(--brown);
+        border: var(--orange) 2px solid;
+    }
+
+/* 文字設計 */
+.org-btn-text-style {
+    font-size: 1.5rem;
+    font-weight: bolder;
+    text-decoration: none;
+    color: var(--orange);
+    transition: color 0.1s;
+    /* 添加過渡效果 */
+}
+
+    .org-btn-text-style:hover {
+        color: var(--white);
+    }
+
+.blue-btn {
+    width: fit-content;
+    padding: 2.5px 20.5px;
+    font-size: 1.6rem;
+    font-weight: bolder;
+    border-radius: 15px;
+    background-color: var(--deepBlue);
+    transition: all 0.1s ease;
+}
+
+    .blue-btn:hover {
+        cursor: pointer;
+        border: var(--deepBlue) 2px solid;
+        background-color: var(--white);
+    }
+
+.blue-btn-text-style {
+    color: var(--white);
+    text-decoration: none;
+    transition: all 0.1s ease;
+}
+
+    .blue-btn-text-style:hover {
+        color: var(--deepBlue);
+    }
+
+.abutton {
+    padding: 8.2px 20.5px;
+    margin-right: 5px;
+}
+#introABC {
+    font-family: "Noto Sans TC", sans-serif;
+    font-family: "Roboto", sans-serif;
+    font-size: large;
+}
+
+.doratry {
+    height: 500px
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    user-select: none;
+}
+
+/* 按鈕主題色（您可以更改顏色） */
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+/* 按鈕 HOVER 效果（可選） */
+.btn:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+
+/* 禁用的按鈕樣式 */
+.disabled-button {
+    background-color: #ccc; /* 灰色背景色 */
+    color: #666; /* 灰色文字顏色 */
+    cursor: not-allowed; /* 禁用光標 */
+}
+
+
+/*修改選擇大頭貼那邊的樣式*/
+
+.file {
+    display: none;
+}
+
+
+
+.custom-file-upload {
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid var(--white);
+    color: var(--white);
+    font-weight: bold;
+    transition: all 0.1s ease;
+}
+
+.custom-file-upload:hover {
+    border: 2px solid var(--orange);
+    color: var(--orange);
+}
+.modal-dialog {
+    max-width: 400px; /* 調整這個數值以適應你的需求 */
+    position: absolute;
+    top: 28%;
+    left: 45%
+}
+
+figure {
+    margin: 0 0 0rem;
+}
+
+/*大頭貼結束*/
+
+/*
+調整member/nav*/
+#nav-tab-member {
+    padding-left: 0px;
+    background-color: transparent;
+    margin-bottom:0px;
+}
+
+#nav-tab {
+    --bs-nav-tabs-border-width: 5px;
+    --bs-nav-tabs-border-color: white;
+    --bs-nav-tabs-link-active-border-color: white;
+    --bs-nav-link-color: var(--brown);
+    --bs-nav-link-hover-color: var(--brown);
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.5rem;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: var(--orange);
+    
+}
+
+label {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.5rem;
+}
+
+#nav-page {
+    padding-left: 0px;
+    background-color: transparent;
+   
+}
+
+#likeR {
+    height:570px;
+}
+
+#nav-pagi {
+    --bs-pagination-active-bg: var(--orange);
+    --bs-pagination-active-border-color: var(--orange);
+    --bs-pagination-color: var(--deepBlue);
+    --bs-pagination-bg: var(--white);
+    --bs-pagination-font-size: 1.2rem;
+    --bs-pagination-disabled-bg: #ced4da;
+}
+
+.form-label {
+color:var(--white)
+}
+
+.active-menu-item {
+    color: var(--orange); /* 橘色 */
+}
+
+.card-title > a {
+    text-decoration: none; /* 移除底線 */
+    color: var(--deepBlue);
+}
+
+.card-title > a:hover{
+    text-decoration: none; /* 移除底線 */
+    color: var(--orange);
+}
+
+.field-icon {
+    float: right;
+    margin-right: 15px;
+    margin-top: -25px;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+}

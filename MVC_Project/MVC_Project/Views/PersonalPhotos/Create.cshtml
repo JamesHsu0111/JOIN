@@ -1,0 +1,44 @@
+﻿@model MVC_Project.Models.PersonalPhoto
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<br />
+<br />
+<br />
+<br />
+
+<h1>Create</h1>
+
+<h4>PersonalPhoto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="GroupID" class="control-label"></label>
+                <select asp-for="GroupID" class="form-control" asp-items="ViewBag.GroupID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhotoData" class="control-label"></label>
+                <input type="file" name="ImageDataFiles" id="ImageData" accept="image/*" class="form-control-file" multiple />
+                <span asp-validation-for="PhotoData" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

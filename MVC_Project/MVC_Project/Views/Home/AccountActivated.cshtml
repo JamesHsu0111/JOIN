@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<script>
+    $(document).ready(function () {
+        var successMessage = '@Html.Raw(TempData["ActivationSuccess"])';
+        if (successMessage && successMessage !== '') {
+            Swal.fire({
+                icon: 'success',
+                title: successMessage,
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: '確定'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "/Home/Login";  // 導航到 Login 頁面
+                }
+            });
+        }
+    });
+</script>
+<!-- SweetAlert 2 的 CSS 和 JavaScript -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<!-- 引入 jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -1,0 +1,583 @@
+﻿/* 字體 */
+/* 分支修改測試 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@200&family=Roboto:ital,wght@1,300&display=swap");
+
+/* "米字號"被用來選取HTML文檔中的所有元素 */
+* {
+    font-family: "Noto Sans TC", sans-serif;
+    font-family: "Roboto", sans-serif;
+    scroll-behavior: smooth;
+    /*當使用超連結時，頁面會平滑滾動到目標位置。 */
+}
+
+/* 主題顏色宣告 */
+:root {
+    --black: #000000;
+    --deepBlue: #14213d;
+    --blue: #416ac2;
+    --orange: #fca311;
+    --lightGray: #e5e5e5;
+    --white: #ffffff;
+    --brown: #AD7D52;
+    --heart: #B44163;
+    --lightBlue-bg: rgba(45, 68, 119, 0.486);
+}
+
+/* 頁面背景色 */
+body {
+    background-color: var(--deepBlue);
+    color: var(--white);
+}
+
+/* 回到網頁頂端圖示設計 */
+#scroll-to-top {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+    z-index: 10;
+}
+
+    /* 防止超連結跑出底線 */
+    #scroll-to-top a {
+        text-decoration: none;
+    }
+
+    #scroll-to-top .homeicon-container {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: solid 3px var(--lightGray);
+        background-color: var(--deepBlue);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all .3s;
+    }
+
+        #scroll-to-top .homeicon-container:hover {
+            transform: scale(1.15);
+        }
+
+.hidden {
+    display: none;
+}
+
+/* 導覽列 */
+.header {
+    background-color: var(--lightBlue-bg);
+}
+
+.navbar {
+    margin-left: 10%;
+    margin-right: 10%;
+    color: var(--white);
+    font-size: 1.75rem;
+    font-weight: bolder;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.navbar-item {
+    text-decoration: none;
+    color: var(--white);
+    margin-right: 1rem;
+}
+
+    .navbar-item:hover {
+        color: var(--orange);
+    }
+
+/* 懸浮方框 */
+.dropdown-content {
+    margin-top: 1rem;
+    display: none;
+    position: absolute;
+    padding: 10px;
+    z-index: 999;
+    padding: 1rem;
+}
+
+    .dropdown-content .row {
+        gap: 1rem;
+    }
+
+
+/* 圖片位址 */
+.dropdown-img-1::before {
+    background: url('https://picsum.photos/240/80?random=1');
+}
+
+.dropdown-img-2::before {
+    background-image: url('https://picsum.photos/240/80?random=2');
+}
+
+.dropdown-img-3::before {
+    background-image: url('https://picsum.photos/240/80?random=3');
+}
+
+.dropdown-img-4::before {
+    background-image: url('https://picsum.photos/240/80?random=4');
+}
+
+
+.dropdown-img-1,
+.dropdown-img-2,
+.dropdown-img-3,
+.dropdown-img-4 {
+    position: relative;
+    overflow: hidden;
+    transition: opacity 0.3s;
+}
+
+    .dropdown-img-1::before,
+    .dropdown-img-2::before,
+    .dropdown-img-3::before,
+    .dropdown-img-4::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        z-index: -1;
+        transition: all 0.3s;
+    }
+
+    .dropdown-img-1:hover::before,
+    .dropdown-img-2:hover::before,
+    .dropdown-img-3:hover::before,
+    .dropdown-img-4:hover::before {
+        opacity: 0.5;
+        transform: scale(1.25);
+    }
+
+
+.dropdown-content .col {
+    height: 60px;
+    width: 240px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    transition: border .3s ease;
+}
+
+    .dropdown-content .col:hover {
+        border: var(--lightGray) solid 2.5px;
+        box-shadow: 5px 5px 15px 0 rgba(129, 128, 128, 0.66);
+    }
+
+.dropdown-content a {
+    text-decoration: none;
+    color: var(--white);
+    font: 700;
+}
+
+    .dropdown-content a:hover {
+        transform: scale(1.2);
+        transition: all 0.3s ease;
+    }
+
+.nav-signin {
+    border: var(--orange) 2px solid;
+    padding: 2.5px 12.5px;
+    border-radius: 5px;
+    transition: all 0.1s ease;
+}
+
+    .nav-signin:hover {
+        background-color: var(--brown);
+        border: var(--orange) 2px solid;
+    }
+
+.singin-style {
+    text-decoration: none;
+    color: var(--orange);
+    transition: color 0.1s;
+    /* 添加過渡效果 */
+}
+
+    .singin-style:hover {
+        color: var(--white);
+    }
+
+/* 搜尋框設計 */
+.searchInputWrapper {
+    position: relative;
+}
+
+.searchInput {
+    width: 18rem;
+    height: 2.5rem;
+    padding: 1rem;
+    border-radius: 2rem;
+    border: none;
+    transition: transform 0.1s ease-in-out;
+}
+
+    .searchInput::placeholder {
+        color: #7e5109;
+        font-size: 1.25rem;
+        opacity: 0.85;
+        font-weight: 600;
+    }
+
+    .searchInput:focus::placeholder {
+        text-indent: -999px
+    }
+
+    .searchInput:focus {
+        outline: none;
+        transform: scale(1.1);
+        transition: all 0.1s ease-in-out;
+        transition: transform 0.2s ease;
+    }
+
+        .searchInput:focus + .searchInputIcon {
+            color: var(--orange);
+            transform: translateX(10px);
+        }
+
+.searchInputIcon {
+    position: absolute;
+    right: 0.8rem;
+    top: 0.5rem;
+    color: var(--deepBlue);
+    transition: all 0.1s ease-in-out;
+}
+
+/* 頁底設計 */
+footer {
+    margin-top: 5%;
+}
+
+.custom-btn {
+    margin: 1rem;
+    display: inline-block;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+    .custom-btn i {
+        font-size: 2rem;
+        color: var(--deepBlue);
+    }
+
+    .custom-btn:hover i {
+        color: var(--brown);
+    }
+
+
+/* 聯絡我們表單 */
+
+#contactDialog {
+    border-radius: 10px;
+    padding: 15px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-76%, -50%);
+    width: 33%;
+    max-height: 80vh;
+    background-color: var(--white);
+    /* 在這裡設置背景顏色 */
+    overflow: hidden;
+    /* 移除滾動條 */
+}
+
+    /* 調整內容置中 */
+    #contactDialog section {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: fit-content;
+    }
+
+#contactBox {
+    width: 100%;
+    text-align: center;
+}
+
+    #contactBox form {
+        text-align: center;
+    }
+
+        #contactBox form .input-box {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+            #contactBox form .input-box .input-field {
+                position: relative;
+                width: 49%;
+                margin: 0.3rem 0;
+            }
+
+                #contactBox form .input-box .input-field input,
+                #contactBox form .textarea-field textarea {
+                    width: 100%;
+                    padding: 0.4rem;
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    background: transparent;
+                    color: var(--deepBlue);
+                    border-radius: 5px;
+                    border: var(--deepBlue) 0.1rem solid;
+                }
+
+.submitText {
+    width: fit-content;
+    padding: 2.5px 20.5px;
+    font-size: 1.6rem;
+    font-weight: bolder;
+    color: var(--white);
+    border-radius: 15px;
+    margin-top: .7rem;
+    background-color: var(--deepBlue);
+    cursor: pointer;
+}
+
+    .submitText:hover {
+        border: var(--deepBlue) 2px solid;
+        background-color: var(--white);
+        color: var(--deepBlue);
+    }
+
+#contactDialog .x-div {
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
+    border: solid 3px var(--deepBlue);
+    background-color: var(--lightGray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    transition: all .3s;
+}
+
+#closeDialogButton {
+    cursor: pointer;
+}
+
+#contactDialog .x-div:hover {
+    animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-1.5px);
+    }
+
+    50% {
+        transform: translateX(1.5px);
+    }
+
+    75% {
+        transform: translateX(-1.5px);
+    }
+}
+
+#contactBox form .input-box .input-field input::placeholder,
+#contactBox form .textarea-field textarea::placeholder {
+    color: gray;
+    font-size: 1.2rem;
+}
+
+#contactBox form .textarea-field textarea {
+    resize: none;
+}
+
+
+
+/*登入那塊*/
+.container-loginandregister {
+    display: flex;
+    justify-content: center;
+    padding-top: 25px;
+}
+
+input::placeholder {
+    color: #9f9e9e;
+    font-size: 1.5em;
+}
+
+/* 頁面背景色 */
+body {
+    background-color: var(--deepBlue);
+    color: var(--white);
+}
+
+/* 設置一下高度我這樣form才有辦法置中 */
+html,
+body {
+    height: 100%;
+}
+
+/* 主題顏色宣告 */
+:root {
+    --black: #000000;
+    --deepBlue: #14213d;
+    --orange: #fca311;
+    --lightGray: #e5e5e5;
+    --white: #ffffff;
+}
+
+
+form {
+    display: block;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 按鈕的基本樣式 */
+.button {
+    background-color: #14213d;
+    color: white;
+    border: 2px solid #14213d;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin: 10px 0;
+    /* 上下間距 */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    width: 12rem;
+    font-size: 1rem;
+}
+
+    /* 滑鼠移過時的樣式 */
+    .button:hover {
+        background-color: white;
+        color: #14213d;
+    }
+
+.login {
+    background-color: var(--white);
+    width: 350px;
+    color: var(--deepBlue);
+    box-shadow: 10px 10px 25px #14213d;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    max-height: 750px;
+    /* 設置最大高度，根據需要更改 */
+}
+
+    .login input {
+        display: flex;
+        margin: 10px auto;
+        text-align: center;
+        background: none;
+        color: var(--deepBlue);
+        padding: 10px;
+        border-radius: 20px;
+        border: 2px solid #14213d;
+    }
+
+.headerforwelcome {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+    .headerforwelcome h1 {
+        margin-right: 120px;
+        margin-bottom: 1rem;
+    }
+
+    .headerforwelcome p {
+        margin-right: 40px;
+    }
+
+#container2 {
+margin:0 auto;
+}
+.headerforregister {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+
+    .headerforregister h1 {
+        margin-right: 120px;
+        margin-bottom: 1rem;
+    }
+
+    .headerforregister p {
+        margin-right: 40px;
+    }
+
+/* body鎖死id解決... */
+#login {
+    margin: 0 auto;
+    /* 實現水平置中 */
+    margin-top: 3rem;
+}
+
+
+#container2 {
+    visibility: hidden;
+    display: none;
+}
+
+.register-link {
+    margin-top: 10px;
+    transition: transform 0.3s ease;
+    text-decoration: underline;
+}
+
+    .register-link:hover {
+        text-decoration: underline;
+        cursor: pointer;
+        color: #9f9e9e;
+    }
+
+.login-link {
+    margin-top: 20px;
+    transition: transform 0.3s ease;
+    text-decoration: underline;
+}
+
+    .login-link :hover {
+        text-decoration: underline;
+        cursor: pointer;
+        color: #9f9e9e;
+    }
+
+.quicklogin {
+    margin-top: 20px;
+}
+
+.forget {
+    margin-top: 10px;
+    transition: transform 0.3s ease;
+    text-decoration: underline;
+}
+
+    .forget:hover {
+        text-decoration: underline;
+        cursor: pointer;
+        color: #9f9e9e;
+    }
+
+
+.input-container {
+    display: flex;
+    align-items: center;
+}

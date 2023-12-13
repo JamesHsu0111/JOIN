@@ -1,0 +1,243 @@
+﻿:root {
+  --black: #000000;
+  --deepBlue: #14213d;
+  --blue: #416ac2;
+  --orange: #fca311;
+  --lightGray: #e5e5e5;
+  --white: #ffffff;
+  --brown: #AD7D52;
+  --heart: #B44163;
+}
+
+.container-loginandregister {
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+}
+
+input::placeholder {
+  color: #9f9e9e;
+  font-size: 1.2em;
+
+
+}
+
+/* 頁面背景色 */
+body {
+  background-color: var(--deepBlue);
+  color: var(--white);
+}
+
+/* 設置一下高度我這樣form才有辦法置中 */
+html,
+body {
+  height: 100%;
+}
+
+/* 主題顏色宣告 */
+:root {
+  --black: #000000;
+  --deepBlue: #14213d;
+  --orange: #fca311;
+  --lightGray: #e5e5e5;
+  --white: #ffffff;
+}
+
+
+form {
+  display: block;
+  align-items: center;
+  justify-content: center;
+
+}
+
+/* 按鈕的基本樣式 */
+.button {
+  background-color: #14213d;
+  color: white;
+  border: 2px solid #14213d;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin: 10px 0;
+  /* 上下間距 */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  width: 12rem;
+  font-size: 1.3rem;
+
+}
+
+/* 滑鼠移過時的樣式 */
+.button:hover {
+  background-color: white;
+  color: #14213d;
+}
+
+.login {
+  background-color: var(--white);
+  width: 350px;
+  color: var(--deepBlue);
+  box-shadow: 10px 10px 25px #14213d;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+  max-height: 750px;
+  /* 設置最大高度，根據需要更改 */
+
+
+}
+
+.login input {
+  display: flex;
+  margin: 10px auto;
+  text-align: center;
+  background: none;
+  color: var(--deepBlue);
+  padding: 10px;
+  border-radius: 20px;
+  border: 2px solid #14213d;
+}
+
+.headerforwelcome {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.headerforwelcome h1 {
+  margin-right: 120px;
+  margin-bottom: 1rem;
+}
+
+.headerforwelcome p {
+  margin-right: 40px;
+}
+
+.headerforregister {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+
+.headerforregister h1 {
+  margin-right: 120px;
+  margin-bottom: 1rem;
+}
+
+.headerforregister p {
+  margin-right: 40px;
+}
+
+/* body鎖死id解決... */
+#login {
+  margin: 0 auto;
+  /* 實現水平置中 */
+  margin-top: 3rem;
+}
+
+
+
+
+.register-link {
+  margin-top: 10px;
+  transition: transform 0.3s ease;
+  text-decoration: underline;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #9f9e9e;
+}
+
+.login-link {
+  margin-top: 20px;
+  transition: transform 0.3s ease;
+  text-decoration: underline;
+}
+
+.login-link :hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #9f9e9e;
+}
+
+.quicklogin {
+    margin-top: 20px;
+    font-size: 1.5rem;
+}
+
+.forget {
+  margin-top: 10px;
+  transition: transform 0.3s ease;
+  text-decoration: underline;
+}
+
+.forget:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #9f9e9e;
+
+}
+
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    color: var(--deepBlue);
+    font-weight: bold;
+    font-size: 1.5rem;
+   
+}
+.alertemail {
+padding-right:30px;
+}
+.alertaccount {
+    padding-right: 30px;
+}
+
+.swal-title {
+    font-size: 3rem;
+}
+.input-container input {
+    border-radius: 8px; /* 您可以根據需要調整這個值 */
+}
+
+.headerforwelcome > h1 {
+    color: #14213d;
+    font-size: 3rem;
+}
+
+.headerforwelcome > p {
+    color: #14213d;
+    font-size: 1.5rem;
+}
+
+.headerforregister h1 {
+    color: #14213d;
+    font-size: 3rem;
+}
+
+.headerforregister p {
+    color: #14213d;
+    font-size: 1.5rem;
+}
+
+.password-container {
+    position: relative;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.swal-button--confirm {
+    background-color: var(--deepBlue);
+}
+
+.swal-button {
+font-size:1.2rem;
+}

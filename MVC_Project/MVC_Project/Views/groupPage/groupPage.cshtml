@@ -1,0 +1,297 @@
+@using Microsoft.AspNetCore.Http
+@model List<MVC_Project.Models.Group>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Category"] = Model[0].GroupCategory;
+    ViewData["ActivityName"] = Model[0].GroupName;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JO!N</title>
+    <link rel="icon" href="~/IMG/小黃人.png" type="image/png" />
+
+
+    <!-- Font Awesome套件引入 -->
+    <script src="https://kit.fontawesome.com/2bfbd4ef35.js" crossorigin="anonymous"></script>
+
+
+    <!-- 引入 Bootstrap 的 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+
+    <!-- css連結 -->
+    <link rel="stylesheet" href="~/css/ActivityPage.css" />
+
+    <!-- 引入 Bootstrap 的 JavaScript 和相依的 Popper.js 和 jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+            crossorigin="anonymous"></script>
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.all.min.js"
+            integrity="sha256-S/HO+Ru8zrLDmcjzwxjl18BQYDCvFDD7mPrwJclX6U8=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <input type="hidden" id="currentUserId" value="@Context.Session.GetString("UserId")" />
+
+    <p type="hidden" name="groupId" class="groupid" data-groupid="@Model[0].GroupID" />
+
+    <!-- 報名按鈕 -->
+    <div class="register-div">
+        @{
+            if (ViewBag.signOrNot == "noAccount")
+            {
+                <div class="registericon-container" id="heartSignBtn">
+                    <i class="fa-solid fa-user-plus fa-xl register-icon"></i>
+                </div>
+                <span class="custom-title">登入後可報名</span>
+            }
+            else
+            {
+                var userInfo = ViewBag.userInfo;
+                if (ViewBag.signOrNot == "false")
+                {
+                    <form asp-action="register" method="post">
+                        <input type="hidden" name="groupId" value="@Model[0].GroupID" />
+                        <input type="hidden" name="userId" value=@userInfo[0].UserID />
+                        <button type="submit" class="registericon-container" id="registerLink">
+                            <i class="fa-solid fa-user-plus fa-xl register-icon"></i>
+                        </button>
+                    </form>
+                    <span class="custom-title">報名</span>
+                }
+                else
+                {
+                    <form id="registerForm">
+                        <input type="hidden" name="groupId" value="@Model[0].GroupID" />
+                        <input type="hidden" name="userId" value="@userInfo[0].UserID" />
+                        <button type="submit" class="registericon-container" id="registerLink">
+                            <i class="fa-solid fa-user-check fa-xl register-icon"></i>
+                        </button>
+                    </form>
+                    <span class="custom-title">已報名</span>
+                }
+            }
+        }
+    </div>
+
+    <!-- 懸浮討論區按鈕 -->
+    <div class="chat-div">
+        <a href="#" class="chaticon-container" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="fa-regular fa-message fa-xl chat-icon"></i>
+        </a>
+        <span class="custom-title">展開討論區</span>
+    </div>
+
+
+
+    <!-- 輪播圖片 -->
+    <div class="mycontainer">
+        <div class="carouselDiv">
+            <div class="carousel-container position-relative  col-lg-8" id="pictureDiv">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        @{
+                            var aa = "";
+                            var i = 0;
+                            var photoList = Model[0].PersonalPhoto.ToList();
+                            for (int j = 0; j < photoList.Count(); j++)
+                            {
+                                @if (j == 0) { aa = "active"; } else { aa = ""; };
+                                <div class="carousel-item @aa" data-slide-number="@i">
+                                    <img src="data:image/png;base64,@Convert.ToBase64String(photoList[j].PhotoData)" class="d-block w-100" alt="..." data-type="image"
+                                         data-toggle="lightbox" data-gallery="example-gallery">
+                                </div>
+                                i++;
+                            }
+                        }
+                    </div>
+                </div>
+
+                <!-- Carousel Navigation -->
+                <div id="carousel-thumbs" class="carousel slide " data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row mx-0">
+                                @{
+                                    var bb = "";
+                                    var y = 0;
+                                    for (int x = 0; x < photoList.Count(); x++)
+                                    {
+                                        @if (x == 0) { bb = "selected"; } else { bb = ""; }
+                                        <div id="carousel-selector-@y" class="thumb col-sm-1 col-lg-3 px-1 py-2 @bb"
+                                             data-target="#myCarousel" data-slide-to="@y">
+                                            <img src="data:image/png;base64,@Convert.ToBase64String(photoList[@y].PhotoData)" class="img-fluid" alt="...">
+                                        </div>
+                                        y++;
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- 活動內容 -->
+    <div class="container" style="margin-top: 2%; margin-bottom: 2%;">
+        <div class="row" style="gap: 50px; display: flex; justify-content: center;">
+            <div class="col-7 activity_about">
+                <h1>活動介紹</h1>
+                <h3>@Model[0].GroupContent </h3>
+
+
+            </div>
+
+            <div class="col-5 activity_info">
+                <h1>活動資訊</h1>
+                <table>
+                    <tr>
+                        <td>成團人數下限：</td>
+                        <td>@Model[0].MinAttendee</td>
+                    </tr>
+                    <tr>
+                        <td>成團人數上限：</td>
+                        <td>@Model[0].MaxAttendee</td>
+                    </tr>
+                    <tr>
+                        <td>出發日：</td>
+                        <td>@Model[0].StartDate?.ToString("yyyy-MM-dd")</td>
+                    </tr>
+                    <tr>
+                        <td>結束日：</td>
+                        <td>@Model[0].EndDate?.ToString("yyyy-MM-dd")</td>
+                    </tr>
+                    <tr>
+                        <td>主揪</td>
+                        <!-- 注意這裡添加了一個class和一個data-attribute來儲存organizer的ID -->
+                        <td class="organizer-info" data-organizer-id="@Model[0].Organizer" style="cursor: pointer; ">@Model[0].Organizer</td>
+                    </tr> 
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主揪Modal結構 -->
+    <div class="modal fade" id="organizerModal" tabindex="-1" aria-labelledby="organizerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" >
+                <div class="modal-header myModalHeader">
+                    <h1 style="color: white">heyyyyy</h1>
+                    <h1 class="modal-title " id="organizerNickname">暱稱</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="organizerImage" src="" alt="大頭貼" style="margin-left:5rem;" />
+                    <br>
+                    <br>
+                    <p id="organizerIntro" class="h3">自我介紹</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <!-- 彈出Modal -->
+    <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true" data-bs-focus="false">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content" id="dialogDiv">
+                <div>
+                    <div id="messageBoardTitle">
+                        <p class="h1">留言板</p>
+                        <div id="discussBtn">留言</div>
+                    </div>
+
+                    <!-- 討論輸入區 -->
+                    <div class="commentDiv" id="discussInput">
+                        <div class="commentBtnDiv">
+                            <p class="h3" style="display:inline-block">你還沒登入會員!</p>
+                            <button class="signBtn" style="display:inline-block" id="signBtn">
+                                <p class="h3">登入發表討論</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @* @{
+        float memberCount = @Model.FirstOrDefault().Registration.Count();
+        float maxNumber = (float)Model.FirstOrDefault().MaxAttendee;
+        float temp = memberCount / maxNumber * 100;
+        if(maxNumber)
+    } *@
+    @{
+        float? memberCount = Model.FirstOrDefault()?.Registration.Count();
+        float? maxNumber = Model.FirstOrDefault()?.MaxAttendee;
+
+        if (maxNumber.HasValue)
+        {
+            float temp = (memberCount ?? 0) / maxNumber.Value * 100;
+            <div class="mycontainer" style="padding: 0 20% 0 20%">
+                <p class="h1" style="text-align:left; color: var(--orange); font-weight:700;">目前報名人數</p>
+                <p class="h3" style="text-align:right; color: white; font-weight: 600; font-size: 1.6rem;">人數上限:@Model[0].MaxAttendee 人</p>
+                <div class="progress" style="height: 35px;">
+                    <div class="progress-bar bg-warning " role="progressbar" style="width: @temp%; color:black; font-size: 1.6rem; font-weight: 600;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">@memberCount 人</div>
+                </div>
+            </div>
+        }
+    }
+    <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="organizerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">參加者</th>
+                        </tr>
+                    </thead>
+                    <tbody id="RegistrationName">
+                        
+                        @* <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td colspan="2">Larry the Bird</td>
+                        </tr> *@
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+<!-- JS連結 -->
+
+
+<script src="~/js/ActivityPage.js"></script>
+
+
+</html>

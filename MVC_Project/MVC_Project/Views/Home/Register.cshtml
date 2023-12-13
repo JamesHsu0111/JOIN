@@ -1,0 +1,106 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<link rel="stylesheet" href="~/css/MemberUse/login.css" />
+<!-- 註冊 -->
+<div class="container-loginandregister">
+
+	<div id="container2">
+
+	<form action="@Url.Action("Register", "Account")" method="post" class="login">
+
+		<div class="headerforregister">
+			<h1>註冊!</h1>
+			<p>開始揪團，一起探險!</p>
+		</div>
+
+		<input type="text" id="username2" name="account" placeholder="帳號" required>
+		<div class="tab"></div>
+
+			<div class="password-container">
+				<input type="password" id="password2" name="password" placeholder="密碼" required>
+				<span toggle="#password2" class="fa fa-fw fa-eye field-icon toggle-password eye-icon"></span>
+			</div>
+			<div class="tab"></div>
+			<div class="password-container">
+				<input type="password" id="comfirm_password" name="comfirm_password" placeholder="確認密碼" required>
+				<span id="passwordMismatch" style="color: red; display: none;">輸入與新密碼不符合</span>
+				
+			</div>
+		
+		
+
+		<div class="tab"></div>
+		<input type="text" id="fullname" name="nickname" placeholder="暱稱" required>
+		<div class="tab"></div>
+		<input type="email" id="emailabc" name="email" placeholder="電子信箱" required>
+		<div class="tab"></div>
+
+		<div class="button-container">
+			<button type="submit" class="button">註冊</button>
+		</div>
+			<h1> ------ </h1>
+		<div class="login-link">
+
+				<a style="display:inline-block ;text-decoration: none;" class="button" href="/Home/Login">已有帳號登入</a>
+		</div>
+	</form>
+	</div>
+</div>
+
+<script>
+
+	$(document).ready(function () {
+		$(".toggle-password").click(function () {
+			var input = $($(this).attr("toggle"));
+			if (input.attr("type") === "password") {
+				input.attr("type", "text");
+			} else {
+				input.attr("type", "password");
+			}
+		});
+	});
+
+	window.addEventListener('DOMContentLoaded', function () {
+		var password = document.getElementById('password2');
+		var confirmPassword = document.getElementById('comfirm_password');
+		var passwordMismatchMessage = document.getElementById('passwordMismatch');
+
+		confirmPassword.addEventListener('input', function () {
+			if (password.value !== confirmPassword.value && confirmPassword.value !== '') {
+				passwordMismatchMessage.style.display = 'inline';
+			} else {
+				passwordMismatchMessage.style.display = 'none';
+			}
+		});
+	});
+
+	$(document).ready(function () {
+		var successMessage = '@Html.Raw(TempData["SuccessMessage"])';
+		var errorMessage = '@Html.Raw(TempData["ErrorMessage"])';
+
+		if (successMessage && successMessage !== '') {
+			Swal.fire({
+				icon: 'success',
+				title: successMessage,
+				confirmButtonColor: '#3085d6',
+				confirmButtonText: '確定'
+			});
+		} else if (errorMessage && errorMessage !== '') {
+			Swal.fire({
+				icon: 'error',
+				title: errorMessage,
+				confirmButtonColor: '#3085d6',
+				confirmButtonText: '確定'
+			});
+		}
+	});
+</script>
+<!-- SweetAlert 2 的 CSS 和 JavaScript -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<!-- 引入 jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

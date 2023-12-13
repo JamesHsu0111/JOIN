@@ -1,0 +1,354 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JO!N</title>
+    <link rel="icon" href="~/IMG/小黃人.png" type="image/png" />
+
+
+    <!-- Font Awesome套件引入 -->
+    <script src="https://kit.fontawesome.com/2bfbd4ef35.js" crossorigin="anonymous"></script>
+
+
+    <!-- 引入 Bootstrap 的 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+
+    <!-- css連結 -->
+    <link rel="stylesheet" href="~/css/ActivityPage.css" />
+
+    <!-- 引入 Bootstrap 的 JavaScript 和相依的 Popper.js 和 jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+            crossorigin="anonymous"></script>
+
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.all.min.js"
+            integrity="sha256-S/HO+Ru8zrLDmcjzwxjl18BQYDCvFDD7mPrwJclX6U8=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <!-- 導覽列設計 -->
+    <div class="header">
+        <div class="row navbar justify-content-between">
+            <div class="col-auto">
+                <a class="navbar-item" href="#" id="home">
+                    <img src="~/IMG/標誌.png" alt="logo" id="logo" width="150" height="50" />
+                </a>
+            </div>
+            <div class="col-auto">
+                <a class="navbar-item" href="@Url.Action("Home", "ACT")" id="explore-link">
+                    探索
+                    <i id="downicon" class="fa-sharp fa-solid fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content" id="explore-dropdown">
+                    <div class="row">
+                        <div class="col dropdown-img-1">
+                            <a href="#">登山</a>
+                        </div>
+                        <div class="col dropdown-img-2">
+                            <a href="#">溯溪</a>
+                        </div>
+                        <div class="col dropdown-img-3">
+                            <a href="#">潛水</a>
+                        </div>
+                        <div class="col dropdown-img-4">
+                            <a href="#">露營</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-auto">
+                <a class="navbar-item" id="group-link" href="#">發起揪團</a>
+            </div>
+            <div class="col">
+                <!-- 填充空間 -->
+            </div>
+            <div class="col-auto">
+                <div class="searchInputWrapper">
+                    <input class="searchInput" type="text" placeholder='搜尋...'>
+                    <i class="searchInputIcon fa fa-search"></i>
+                </div>
+            </div>
+            <div class="col-auto">
+                <a class="navbar-item" href="#">登入</a>
+            </div>
+            <div class="col-auto nav-signin">
+                <a class="singin-style" href="#">註冊</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 活動頁面設計 -->
+    <div class="mycontainer">
+        <!-- 麵包屑 -->
+        <div id="linkWordDiv">
+            <h1 id="linkWord ">探索 > 其他 > 衝浪</h1>
+        </div>
+        <div class="reg-and-like-btn row">
+            <div class="col-auto">
+                <!-- 報名按鈕 -->
+                <div class="register-btn">
+                    <a class="register-btn-text-style" href="#">
+                        我要報名!
+                    </a>
+                </div>
+            </div>
+            <div class="col-auto">
+                <!-- 點擊收藏 -->
+                <div class="heart-inner">
+                    <div class="heart-icon">
+                        <i class="fa-regular fa-heart fa-2xl"></i>
+                    </div>
+                    <div class="hit-style">
+                        <i class="fa-solid fa-angle-up fa-lg"> 點擊收藏，不錯過活動通知 !</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- 輪播圖片 -->
+    <div class="mycontainer">
+        <div class="carouselDiv">
+            <div class="carousel-container position-relative  col-lg-8" id="pictureDiv">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-slide-number="0">
+                            <img src="~/IMG/手剎車.jpg" class="d-block w-100" alt="..." data-type="image"
+                                 data-toggle="lightbox" data-gallery="example-gallery">
+                        </div>
+                        <div class="carousel-item" data-slide-number="1">
+                            <img src="~/IMG/surf3.jpg" class="d-block w-100" alt="..." data-type="image"
+                                 data-toggle="lightbox" data-gallery="example-gallery">
+                        </div>
+                        <div class="carousel-item" data-slide-number="2">
+                            <img src="~/IMG/surf2.jpg" class="d-block w-100" alt="..." data-type="image"
+                                 data-toggle="lightbox" data-gallery="example-gallery">
+                        </div>
+                        <div class="carousel-item" data-slide-number="3">
+                            <img src="~/IMG/surf.jpg" class="d-block w-100" alt="..." data-type="image"
+                                 data-toggle="lightbox" data-gallery="example-gallery">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Navigation -->
+                <div id="carousel-thumbs" class="carousel slide " data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row mx-0">
+                                <div id="carousel-selector-0" class="thumb col-sm-1 col-lg-3 px-1 py-2 selected"
+                                     data-target="#myCarousel" data-slide-to="0">
+                                    <img src="~/IMG/手剎車.jpg" class="img-fluid" alt="...">
+                                </div>
+                                <div id="carousel-selector-1" class="thumb col-sm-1 col-lg-3 px-1 py-2" data-target="#myCarousel"
+                                     data-slide-to="1">
+                                    <img src="~/IMG/surf3.jpg" class="img-fluid" alt="...">
+                                </div>
+                                <div id="carousel-selector-2" class="thumb col-sm-1 col-lg-3 px-1 py-2" data-target="#myCarousel"
+                                     data-slide-to="2">
+                                    <img src="~/IMG/surf2.jpg" class="img-fluid" alt="...">
+                                </div>
+                                <div id="carousel-selector-3" class="thumb col-sm-1 col-lg-3 px-1 py-2" data-target="#myCarousel"
+                                     data-slide-to="3">
+                                    <img src="~/IMG/surf.jpg" class="img-fluid" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- 活動內容 -->
+    <div class="container" style="margin-top: 2%; margin-bottom: 2%;">
+        <div class="row" style="gap: 50px; display: flex; justify-content: center;">
+            <div class="col-7 activity_about">
+                <h1>活動介紹</h1>
+                <h3>🏄‍♂️ 烏石港週末衝浪，讓你的週末更精彩！</h3>
+
+                <p>準備好迎接一場極致的海上冒險嗎？來烏石港，探索無限可能性的海浪世界！我們誠摯邀請您參加這場刺激又充滿樂趣的週末衝浪活動。</p>
+
+                <h4>🌞 活動亮點：</h4>
+                <ul>
+                    <li>🌊 初學者歡迎：無論您是初學者還是經驗豐富的衝浪手，我們都有適合您的課程，專業教練將全程指導。</li>
+                    <li>🏄‍♀️ 體驗刺激：感受那一瞬間的刺激，與波浪共舞，挑戰自己的極限。</li>
+                    <li>🏝️ 美麗風景：烏石港的美麗海灘和風光迷人的海岸線，讓您在衝浪之外也能度過愉快的時光。</li>
+                </ul>
+            </div>
+
+            <div class="col-5 activity_info">
+                <h1>活動資訊</h1>
+                <table>
+                    <tr>
+                        <td>成團人數下限：</td>
+                        <td>3 人</td>
+                    </tr>
+                    <tr>
+                        <td>投票日：</td>
+                        <td>2023/10/09</td>
+                    </tr>
+                    <tr>
+                        <td>建議自備：</td>
+                        <td>衝浪板</td>
+                    </tr>
+                    <tr>
+                        <td>建議攜帶金額：</td>
+                        <td>500</td>
+                    </tr>
+                    <tr>
+                        <td>活動地點：</td>
+                        <td>夏威夷</td>
+                    </tr>
+                    <tr>
+                        <td>預計出發月份：</td>
+                        <td>11月</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 懸浮聊天室按鈕 -->
+
+
+    <a href="#" class="float btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <i class="fa-solid fa-comment fa-2xl"></i>
+    </a>
+    <div class="label-container">
+        <div class="label-text">
+            點選開啟活動聊天室
+        </div>
+        <i class="fa fa-play label-arrow "></i>
+    </div>
+
+    <!-- 彈出Modal -->
+
+    <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content" id="dialogDiv">
+                <div>
+                    <div id="messageBoardTitle">
+                        <p class="h1">討論區</p>
+                        <div id="discussBtn">建立討論</div>
+                    </div>
+
+                    <!-- 討論輸入區 -->
+                    <div class="commentDiv" id="discussInput">
+                        <div class="userCommentDiv">
+                            <img class="profile" src="./Files/godtone.png" />
+                            <div class="userCommentDivRight">
+                                <p class="h3 align-self-center">嘎痛</p>
+                                <div class="discuss-box align-self-start">
+                                    <textarea name="" id="discussTextArea" class="col-auto" rows="3" placeholder="討論串輸入框"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="commentBtnDiv">
+                            <div class="publishBtn">
+                                <p class="h3">發表</p>
+                                <i class="fa-solid fa-comment fa-2xl align-self-center"></i>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- 討論區 -->
+                <div class="commentDiv">
+                    <div class="userCommentDiv">
+                        <img class="profile" src="~/IMG/ma.jpg" />
+                        <div class="userCommentDivRight">
+                            <p class="h3 align-self-center">馬英九</p>
+                            <div class="comment-box align-self-start">望有過現在立刻，自己都有點不非了好，大然就是。</div>
+                        </div>
+                    </div>
+                    <div class="commentBtnDiv">
+                        <div class="replyBtn" id="replyBtn">
+                            <p class="h3">回覆</p>
+                            <i class="fa-solid fa-comment fa-2xl align-self-center"></i>
+                        </div>
+                    </div>
+                    <div class="replyDiv">
+                        <div class="userCommentDiv">
+                            <img class="profile" src="~/IMG/lai.jpg" />
+                            <div class="userCommentDivRight">
+                                <p class="h3 align-self-center">ㄌㄨㄚˋ </p>
+                                <div class="comment-box align-self-start">嗚嗚還：分望有過現在立刻，自己都有點不非了好，大然就是。</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="replyDiv">
+                        <div class="userCommentDiv">
+                            <img class="profile" src="~/IMG/tsai2.jpg" />
+                            <div class="userCommentDivRight">
+                                <p class="h3 align-self-center">ㄘㄨㄚˋ</p>
+                                <div class="comment-box align-self-start">這次一定不炸版</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="replyTextDiv">
+                        <div class="userCommentDiv">
+                            <img class="profile" src="~/IMG/godtone.png" />
+                            <div class="userCommentDivRight">
+                                <p class="h3 align-self-center">嘎痛</p>
+                                <textarea name="" id="replyTextArea" class="col-auto" rows="1"></textarea>
+                                <div class="messageBtn">
+                                    <a class="messageBtn-text-style" href="#">
+                                        留言
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+               
+
+            </div>
+        </div>
+    </div>
+    
+
+
+
+
+
+
+
+</body>
+<!-- JS連結 -->
+
+<script src="~/js/ActivityPage.js"></script>
+
+
+</html>

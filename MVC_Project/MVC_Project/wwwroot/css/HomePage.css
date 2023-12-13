@@ -1,0 +1,529 @@
+﻿
+/* 字體 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@200&family=Roboto:ital,wght@1,300&display=swap");
+
+/* "米字號"被用來選取HTML文檔中的所有元素 */
+* {
+    font-family: "Noto Sans TC", sans-serif;
+    font-family: "Roboto", sans-serif;
+    scroll-behavior: smooth;
+    /*當使用超連結時，頁面會平滑滾動到目標位置。 */
+}
+
+/* 主題顏色宣告 */
+:root {
+    --black: #000000;
+    --deepBlue: #14213d;
+    --blue: #416ac2;
+    --orange: #fca311;
+    --lightGray: #e5e5e5;
+    --white: #ffffff;
+    --brown: #AD7D52;
+    --heart: #B44163;
+    --lightBlue-bg: rgba(45, 68, 119, 0.486);
+}
+
+/* 頁面背景色 */
+body {
+    background-color: var(--deepBlue);
+    color: var(--white);
+}
+
+/*導覽列*/
+.navbar {
+    margin-left: 10%;
+    margin-right: 10%;
+    color: var(--white);
+    font-size: 1.75rem;
+    font-weight: bolder;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.navbar-item {
+    text-decoration: none;
+    color: var(--white);
+    margin-right: 1rem;
+}
+
+    .navbar-item:hover {
+        color: var(--orange);
+    }
+
+
+/* slogan */
+.slogan-section {
+    display: flex;
+    justify-content: center;
+    /* 水平置中 */
+    align-items: center;
+    /* 垂直置中 */
+    padding-left: 10%;
+    padding-right: 10%;
+    height: 80vh;
+    margin-top: 72px;
+    background-image: url("../IMG/大壩.JPG");
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+    /* 創建漸層覆蓋層 */
+    .slogan-section::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, transparent 50%, #14213d7c, #14213d);
+        z-index: 1;
+    }
+
+
+.slogan-text h2 {
+    font-size: 5rem;
+    font-weight: 900;
+    text-shadow: 4px 4px 5px rgb(81, 93, 104);
+}
+
+.slogan-text .slogan-lower-text {
+    font-size: 3rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* 網站介紹 */
+.intro-title {
+    margin-top: 4%;
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.intro-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 70vh;
+    transition: 0.25s;
+}
+
+    .intro-div .options {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        overflow: hidden;
+        min-width: 600px;
+        max-width: 1200px;
+        width: calc(100% - 100px);
+        height: 400px;
+    }
+
+@media screen and (max-width: 718px) {
+    .intro-div .options {
+        min-width: 520px;
+    }
+
+        .intro-div .options .option:nth-child(5) {
+            display: none;
+        }
+}
+
+@media screen and (max-width: 638px) {
+    .intro-div .options {
+        min-width: 440px;
+    }
+
+        .intro-div .options .option:nth-child(4) {
+            display: none;
+        }
+}
+
+@media screen and (max-width: 558px) {
+    .intro-div .options {
+        min-width: 360px;
+    }
+
+        .intro-div .options .option:nth-child(3) {
+            display: none;
+        }
+}
+
+@media screen and (max-width: 478px) {
+    .intro-div .options {
+        min-width: 280px;
+    }
+
+        .intro-div .options .option:nth-child(2) {
+            display: none;
+        }
+}
+
+.intro-div .options .option {
+    position: relative;
+    overflow: hidden;
+    min-width: 70px;
+    margin: 10px;
+    background: var(--optionBackground, var(--defaultBackground, #E6E9ED));
+    cursor: pointer;
+    transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+}
+
+    .intro-div .options .option:nth-child(1) {
+        --defaultBackground: #AC92EC;
+    }
+
+    .intro-div .options .option:nth-child(2) {
+        --defaultBackground: #FC6E51;
+    }
+
+    .intro-div .options .option:nth-child(3) {
+        --defaultBackground: #FFCE54;
+    }
+
+    .intro-div .options .option:nth-child(4) {
+        --defaultBackground: #2ECC71;
+    }
+
+    .intro-div .options .option:nth-child(5) {
+        --defaultBackground: #5D9CEC;
+    }
+
+    .intro-div .options .option:nth-child(6) {
+        --defaultBackground: #a92895;
+    }
+
+    .intro-div .options .option.active {
+        flex-grow: 10000;
+        transform: scale(1);
+        margin: 0px;
+        border-radius: 40px;
+    }
+
+        .intro-div .options .option.active .shadow {
+            box-shadow: inset 0 -120px 120px -120px black, inset 0 -120px 120px -100px black;
+        }
+
+        .intro-div .options .option.active .label {
+            bottom: 10px;
+            left: 15px;
+        }
+
+            .intro-div .options .option.active .label .info > div {
+                left: 0px;
+                opacity: 1;
+            }
+
+    .intro-div .options .option:not(.active) {
+        flex-grow: 1;
+        border-radius: 30px;
+    }
+
+        .intro-div .options .option:not(.active) .shadow {
+            bottom: -40px;
+            box-shadow: inset 0 -120px 0px -120px black, inset 0 -120px 0px -100px black;
+        }
+
+        .intro-div .options .option:not(.active) .label {
+            bottom: 2px;
+            left: 10px;
+        }
+
+            .intro-div .options .option:not(.active) .label .info > div {
+                left: 20px;
+                opacity: 0;
+            }
+
+    .intro-div .options .option .shadow {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        height: 120px;
+        transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+    }
+
+    .intro-div .options .option .label {
+        display: flex;
+        position: absolute;
+        right: 0px;
+        height: 50px;
+        transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+    }
+
+        .intro-div .options .option .label .icon {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            min-width: 50px;
+            max-width: 50px;
+            height: 40px;
+            border-radius: 100%;
+            background-color: white;
+            color: var(--defaultBackground);
+        }
+
+        .intro-div .options .option .label .info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 15px;
+            margin-bottom: 50px;
+            color: var(--white);
+            text-shadow: 3px 3px 4px var(--black);
+        }
+
+            .intro-div .options .option .label .info > div {
+                position: relative;
+                transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95), opacity 0.5s ease-out;
+            }
+
+            .intro-div .options .option .label .info .main {
+                font-weight: bold;
+                font-size: 2.5rem;
+            }
+
+            .intro-div .options .option .label .info .sub {
+                transition-delay: 0.1s;
+                font-size: 2rem;
+            }
+
+
+/* 活動導覽設計 */
+.activity-container {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.activity-title {
+    margin-bottom: 5%;
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.activity-content {
+    margin-top: 5%;
+}
+
+.activity-small-title {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+/* cards */
+
+/* 外面多包一個div讓方塊們保持置中 */
+.card-div {
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+    gap: 2.5rem;
+}
+
+/* 活動分類標籤 */
+.category-box {
+    border: var(--lightGray) 1px solid;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: var(--brown);
+    color: var(--white);
+    padding: 5px 10px;
+    border-radius: 5px 12px 5px 5px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    z-index: 1;
+}
+
+
+.vote-icon:hover {
+    cursor: pointer;
+}
+
+.card__clock {
+    width: 35px;
+    height: 35px;
+    vertical-align: middle;
+    fill: var(--deepBlue);
+    padding-bottom: 3px;
+}
+
+.card__time {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--deepBlue);
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.card__img {
+    visibility: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 300px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.card__info-hover {
+    position: absolute;
+    padding: 16px;
+    width: 100%;
+    opacity: 0;
+}
+
+    /*未登入狀態下的投票icon*/
+    .card__info-hover .disabled-icon {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+/*未登入點擊提醒*/
+.custom-title {
+    visibility: hidden;
+    display: block;
+    margin-top: 10px;
+    opacity: 0.8;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.vote-icon:hover +.custom-title {
+    visibility: visible;
+}
+
+/*這段是改啥的?*/
+.vote-icon.solid {
+    opacity: 1;
+    visibility: visible;
+}
+
+.card__img--hover {
+    transition: 0.2s all ease-out;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    position: absolute;
+    height: 300px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    top: 0;
+}
+
+.card {
+    transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+    background-color: #fff;
+    width: 33.3%;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+}
+
+    .card:hover {
+        box-shadow: 0px 30px 40px -8px rgba(244, 242, 242, 0.466);
+        transform: scale(1.10, 1.10);
+    }
+
+/*卡片內容設計*/
+.card__info {
+    z-index: 2;
+    background-color: var(--white);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    padding: 16px 24px 24px 24px;
+}
+
+.card__liked-text {
+    color: var(--heart);
+    font-size: 1.3rem;
+    font-weight: bold;
+    position: absolute;
+    bottom: 5px;
+    right: 13px;
+}
+
+.card__category {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: var(--black);
+}
+
+.card__ExpectedMonth {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: var(--black);
+}
+
+.card__VoteDate-text {
+    position: absolute;
+    bottom: 28%;
+    right: 10px;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: var(--black);
+    z-index:1111;
+}
+
+.card__title {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.card__period {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card__by {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-end; /* 靠右對齊 */
+    gap: 8px;
+}
+
+.card__author {
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--brown);
+}
+
+.card:hover .card__img--hover {
+    height: 100%;
+    opacity: 0.3;
+}
+
+.card:hover .card__info {
+    background-color: transparent;
+    position: relative;
+}
+
+.card:hover .card__info-hover {
+    opacity: 1;
+    z-index: 10;
+}
+
+

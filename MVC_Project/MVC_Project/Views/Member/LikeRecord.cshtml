@@ -1,0 +1,152 @@
+﻿@model List<MemberUseViewModel>
+
+@{
+    Layout = "_MemberLayout";
+}
+
+
+
+<div class="container" id="likeR">
+    <div class="row row-cols-2">
+        @foreach (var activity in ViewBag.LikedActivities)
+        {
+            <!-- 顯示資料的程式碼 -->
+            var canEditValue = activity.CanEdit ? "true" : "false";
+           
+            <div class="col">
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="/activity/index/@activity.ActivityID">@activity.ActivityName</a></h3>
+                        <p class="card-text">投票日:@activity.VoteDate?.ToString("yyyy-MM-dd")</p>
+                        <div class="card-button-container">
+
+                            @if (activity.CanEdit)
+                            {
+                                
+                                <a class="abutton blue-btn blue-btn-text-style"
+                                   href="@Url.Action("SelectDatefromMember", "VoteRecords", new { userId = @ViewBag.UserId, activityId = activity.ActivityID })">
+                                    投票開放
+                                </a>
+                                
+                            }
+                                <button class="blue-btn blue-btn-text-style delete-btn" data-id="@activity.LikeRecordID">取消參與</button>
+                            
+
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+   
+</div>
+
+<div class="container">
+    <nav aria-label="Page navigation example" id="nav-page">
+        <ul class="pagination justify-content-center" id="nav-pagi">
+            <li class="page-item @(ViewBag.PageNumber == 1 ? "disabled" : "")">
+                <a class="page-link" href="@Url.Action("LikeRecord", "Member", new { page = ViewBag.PageNumber - 1 })" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                <li class="page-item @(i == ViewBag.PageNumber ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("LikeRecord", "Member", new { page = i })">@i</a>
+                </li>
+            }
+
+            <li class="page-item @(ViewBag.PageNumber == ViewBag.TotalPages ? "disabled" : "")">
+                <a class="page-link" href="@Url.Action("LikeRecord", "Member", new { page = ViewBag.PageNumber + 1 })" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    </div>
+@* <div class="pagination">
+    @if (ViewBag.PageNumber > 1)
+    {
+        <a href="/Member/LikeRecord?page=@(ViewBag.PageNumber - 1)">上一頁</a>
+    }
+    @if (ViewBag.HasNextPage)
+    {
+        <a href="/Member/LikeRecord?page=@(ViewBag.PageNumber + 1)">下一頁</a>
+    }
+</div> *@
+
+@* <div class="container">
+    <div class="row row-cols-2">
+    @foreach (var activity in ViewBag.LikedActivities)
+    {
+            var canEditValue = activity.CanEdit ? "true" : "false";
+            <div class="col">
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h3 class="card-title">@activity.ActivityName</h3>
+                        <p class="card-text">投票日:@activity.VoteDate?.ToString("yyyy-MM-dd")</p>
+                        <div class="card-button-container">
+                            <button class="blue-btn blue-btn-text-style"
+                                    onclick="checkEditable(@canEditValue);">
+                             選擇時段
+                            </button>
+                            <button class="blue-btn blue-btn-text-style delete-btn" data-id="@activity.LikeRecordID">取消收藏</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    }
+    </div>
+</div> *@
+
+<script>
+
+
+
+    $('.delete-btn').click(function () {
+        var id = $(this).data('id');
+
+        swal({
+            title: "確定要取消參與嗎？",
+            text: "取消就無法參與投票囉！",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.post("/Member/DeleteLikeRecord", { likeRecordID: id }, function () {
+                        // 呼叫成功後的操作，例如顯示一秒的成功訊息
+                        swal({
+                            title: "成功！",
+                            text: "已成功刪除紀錄！",
+                            icon: "success",
+                            buttons: false,
+                            timer: 1000,  // 1秒後自動關閉
+                            timerProgressBar: true
+                        }).then(() => {
+                            location.reload();
+                        });
+                    })
+                        .fail(function () {
+                            swal({
+                                title: "錯誤！",
+                                text: "刪除過程中發生錯誤！",
+                                icon: "error",
+                                buttons: false,
+                                timer: 1000,  // 1秒後自動關閉
+                                timerProgressBar: true
+                            });
+                        });
+                } else {
+                    location.reload();
+                }
+            });
+    });
+
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

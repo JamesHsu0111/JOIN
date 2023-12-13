@@ -1,0 +1,55 @@
+﻿@model List<MemberUseViewModel>
+
+
+@{
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+
+
+<div class="container"  >
+    <div class="btn-group " style="width:100%; background-color:#416ac2;" role="group" aria-label="Basic outlined example">
+        <button type="button" class="btn btn-outline-primary" style="color:#fca311; font-size:xx-large;" id="groupBtn">投票活動</button>
+        <button type="button" class="btn btn-outline-primary" style="color:#fca311; font-size:xx-large;" id="activityBtn">可報名活動</button>
+        <button type="button" class="btn btn-outline-primary" style="color:#fca311; font-size:xx-large;" id="chatBtn">留言</button>
+    </div>
+    <br><br><br>
+    <div id="adminDataDiv" style="width:120%;">
+        <table class="table table-striped" id="dataTable">
+            @* <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">活動名稱</th>
+                    <th scope="col">使用者名稱</th>
+                    <th scope="col">留言</th>
+                </tr>
+            </thead>
+            <tbody >
+                <tr>
+                <th scope="row">1</th>
+                    <td><a href="/grouPage/grouPage">Mark</a></td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td></td>
+                </tr>
+                
+            </tbody> *@
+        </table>
+    </div>
+</div>
+
+<div class="container">
+    
+</div>
+
+
+<script src ="~/js/admin.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+

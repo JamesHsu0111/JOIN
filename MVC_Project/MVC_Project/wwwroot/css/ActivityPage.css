@@ -1,0 +1,642 @@
+﻿/* 主題顏色宣告 */
+:root {
+    --black: #000000;
+    --deepBlue: #14213d;
+    --blue: #416ac2;
+    --orange: #fca311;
+    --lightGray: #e5e5e5;
+    --white: #ffffff;
+    --brown: #AD7D52;
+    --heart: #B44163;
+    --lightBlue-bg: rgba(45, 68, 119, 0.486);
+}
+
+/* 頁面背景色 */
+body {
+    background-color: var(--deepBlue);
+    color: var(--white);
+}
+
+/* 導覽列 */
+/*.header {
+    background-color: rgba(45, 68, 119, 0.486);
+}*/
+
+.navbar {
+    margin-left: 10%;
+    margin-right: 10%;
+    color: var(--white);
+    font-size: 1.75rem;
+    font-weight: bolder;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.mycontainer {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+/*投票icon*/
+.vote-div {
+    position: sticky;
+    top: 10%;
+    margin-top: 2%;
+    margin-left: 82%;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+}
+
+.voteicon-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: solid 3px var(--white);
+    background-color: var(--deepBlue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 2px;
+    transition: all 0.15s ease-in-out;
+}
+
+.vote-div .vote-icon {
+    cursor: pointer;
+    color: var(--white);
+}
+
+.vote-div:hover .voteicon-container {
+    border-color: var(--orange);
+}
+
+.vote-div:hover i {
+    color: var(--orange);
+}
+
+.vote-div .disabled-icon {
+    cursor: not-allowed;
+}
+
+/*未登入點擊提醒*/
+.custom-title {
+    visibility: hidden;
+    opacity: 0.8;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.vote-div:hover .custom-title {
+    visibility: visible;
+}
+
+/*Group page報名按鈕*/
+.register-div {
+    position: sticky;
+    top: 10%;
+    margin-top: 2%;
+    margin-left: 82%;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+}
+
+.registericon-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: solid 3px var(--white);
+    background-color: var(--deepBlue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 2px;
+    transition: all 0.15s ease-in-out;
+}
+
+.register-div .register-icon {
+    cursor: pointer;
+    color: var(--white);
+}
+
+.register-div:hover .custom-title {
+    visibility: visible;
+}
+
+.register-div:hover .registericon-container {
+    border-color: var(--orange);
+}
+
+.register-div:hover i {
+    color: var(--orange);
+}
+
+/* 懸浮討論區按鈕 */
+.chat-div {
+    position: sticky;
+    top: 18%;
+    margin-top: 10px;
+    margin-left: 82%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
+.chaticon-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: solid 3px var(--white);
+    background-color: var(--deepBlue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease-in-out;
+}
+
+.chat-div .chat-icon {
+    cursor: pointer;
+    color: var(--white);
+}
+
+.chat-div:hover .custom-title {
+    visibility: visible;
+}
+
+.chat-div:hover .chaticon-container {
+    border-color: var(--orange);
+}
+
+.chat-div:hover i {
+    color: var(--orange);
+}
+
+.chat-div a {
+    text-decoration: none;
+}
+
+/* 麵包屑 */
+#linkWordDiv {
+    margin-top: 1%;
+}
+
+    #linkWordDiv h1 {
+        font-size: 1.25rem;
+        font-weight: 500;
+        text-align: left;
+    }
+
+.reg-and-like-btn {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 12%;
+    margin-bottom: 2%;
+}
+
+/* 輪播圖 */
+.carouselDiv {
+    display: flex;
+    justify-content: center;
+    margin-top: -6.5%;
+}
+
+.carouselDiv-forIndex {
+    display: flex;
+    justify-content: center;
+    margin-top: -3%;
+}
+/* 圖片 */
+#pictureDiv {
+    box-shadow: 0 10px 50px 0 rgba(129, 128, 128, 0.66), inset 0 0 0 50px #333, inset 0 0 0 6px rgba(255, 255, 255, 0.5);
+    position: relative;
+}
+
+.carousel {
+    position: relative;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    height: 35rem;
+    width: 50rem;
+}
+
+#carousel-thumbs {
+    background: rgba(255, 255, 255, .3);
+    bottom: 0;
+    left: 0;
+    padding: 0 50px;
+    right: 0;
+}
+
+    #carousel-thumbs img {
+        border: 10px solid transparent;
+        cursor: pointer;
+        /* 統一調整小圖 */
+        height: 8rem;
+        width: 12rem;
+    }
+
+        #carousel-thumbs img:hover {
+            transform: scale(1.05);
+        }
+
+    #carousel-thumbs .selected img {
+        border: 4px solid var(--deepBlue);
+    }
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+}
+
+@media all and (max-width: 767px) {
+    .carousel-container #carousel-thumbs img {
+        border-width: 3px;
+    }
+}
+
+@media all and (min-width: 576px) {
+    .carousel-container #carousel-thumbs {
+        position: absolute;
+    }
+}
+
+@media all and (max-width: 576px) {
+    .carousel-container #carousel-thumbs {
+        background: #ccccce;
+    }
+}
+
+
+/* 活動內容資訊 */
+
+.activity_about {
+    background-color: var(--lightBlue-bg);
+    border-radius: 10px;
+    padding: 2%;
+}
+
+    .activity_about h1,
+    .activity_info h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        padding-bottom: 2%;
+        color: var(--orange);
+    }
+
+
+    .activity_about h3,
+    .activity_about h4 {
+        font-size: 1.55rem;
+        /* 修改字體大小 */
+        font-weight: 800;
+        /* 修改字體粗細 */
+    }
+
+    .activity_about ul,
+    .activity_about p {
+        font-size: 1.5rem;
+        /* 修改字體大小 */
+        font-weight: 400;
+        /* 修改字體粗細 */
+    }
+
+.activity_info {
+    background-color: var(--lightBlue-bg);
+    border-radius: 10px;
+    padding: 2%;
+    width: auto;
+    height: fit-content;
+}
+
+    .activity_info td {
+        font-size: 1.5rem;
+        font-weight: 700;
+        padding-bottom: 1%;
+    }
+
+.organizer-info:hover {
+    color: var(--orange); /* 指定所需的文本颜色 */
+}
+
+
+
+
+
+/* 聊天室彈出 */
+
+#dialogDiv {
+    background-color: var(--white);
+    height: auto;
+    margin-top: 10rem;
+    padding: 2rem;
+    margin-left: 19%;
+    width: 65%;
+}
+
+/* 討論區 */
+/*討論區標題*/
+#messageBoardTitle {
+    width: 100%;
+    height: 6rem;
+    border-bottom: 0.5rem solid var(--lightBlue-bg);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    #messageBoardTitle .h1 {
+        margin: 0;
+        color: var(--deepBlue);
+        font-weight: 600;
+    }
+
+#discussInput {
+    display: none
+}
+
+/*留言按鈕*/
+#discussBtn {
+    font-size: 1.5rem;
+    font-weight: bolder;
+    cursor: pointer;
+    width: fit-content;
+    padding: 2.5px 20.5px;
+    border-radius: 12px;
+    background-color: var(--deepBlue);
+    transition: all 0.1s ease;
+}
+
+    #discussBtn:hover {
+        border: var(--deepBlue) 2px solid;
+        background-color: var(--white);
+        color: var(--deepBlue);
+    }
+
+/*報名才能討論提醒文字*/
+.registertodiscuss {
+    color: var(--deepBlue);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.discuss-box {
+    height: auto;
+    width: 100%;
+    margin-bottom: 1rem;
+    /* background: gray; */
+    overflow-wrap: break-word;
+    /* padding: 1rem; */
+}
+
+    .discuss-box textarea {
+        width: 100%;
+    }
+
+
+/*發送按鈕*/
+.publishBtn {
+    font-size: 1.2rem;
+    font-weight: bolder;
+    cursor: pointer;
+    width: fit-content;
+    padding: 2.5px 20.5px;
+    margin-top: 200%;
+    border-radius: 12px;
+    background-color: var(--deepBlue);
+    transition: all 0.1s ease;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    gap: 5px;
+    color: var(--white);
+}
+
+    .publishBtn:hover {
+        border: var(--deepBlue) 2px solid;
+        background-color: var(--white);
+        color: var(--deepBlue);
+    }
+
+
+/* 留言按鈕 */
+.messageBtn {
+    font-size: 1.2rem;
+    font-weight: bolder;
+    cursor: pointer;
+    width: fit-content;
+    padding: 2.5px 20.5px;
+    margin-top: 100%;
+    border-radius: 12px;
+    background-color: var(--deepBlue);
+    transition: all 0.1s ease;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    gap: 5px;
+    color: var(--white);
+}
+
+    .messageBtn:hover {
+        border: var(--deepBlue) 2px solid;
+        background-color: var(--white);
+        color: var(--deepBlue);
+    }
+
+
+/*留言輸入框設計*/
+.myTextarea {
+    background-color: var(--lightGray);
+    border: double var(--lightBlue-bg) 2px;
+    border-radius: 0.5rem;
+}
+
+    .myTextarea:focus {
+        border: double var(--orange) 2px;
+        outline: none; /* 這將移除焦點時的外框 */
+    }
+/* 討論區-對話框 */
+.commentDiv {
+    display: block;
+    height: auto;
+    margin-top: 2rem;
+    border: 3px solid var(--lightBlue-bg);
+    border-radius: 0.5rem;
+    background-color: var(--white);
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.userCommentDiv {
+    width: 100%;
+    height: auto;
+    display: inline-flex;
+    gap: 10px;
+    background-color: var(--white);
+}
+
+
+.profile {
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: 2px solid var(--orange);
+    margin: 1%;
+    position: relative;
+}
+
+/*回覆者頭貼小一點*/
+.profile-toReply {
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    border: 2px solid var(--orange);
+    margin: 1%;
+    position: relative;
+}
+
+/*留言文字大小*/
+.ChatTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5%;
+}
+
+.comment-box {
+    margin-bottom: 1.5%;
+    overflow-wrap: break-word;
+    font-size: 1.25rem;
+}
+
+
+
+
+.userCommentDivRight {
+    color: var(--deepBlue);
+    background-color: var(--lightGray);
+    border-radius: 1rem;
+    width: auto;
+    height: fit-content;
+    padding: 1% 2% 1% 2%;
+}
+
+.editDeleteTime-div {
+    margin: 5px 0 5px 0;
+    display: flex;
+    color: var(--deepBlue);
+    margin-left: 15%;
+    gap: 10px;
+    font-size: 1rem;
+}
+
+
+.commentDatetime {
+    margin: 0;
+    color: var(--deepBlue);
+}
+
+/*回覆按鈕設計*/
+.commentBtnDiv {
+    color: var(--deepBlue);
+}
+
+#replyBtn {
+    transition: color 0.1s;
+    cursor: pointer;
+}
+
+    #replyBtn:hover span {
+        color: var(--orange);
+    }
+
+
+/*-------設計結束*/
+
+
+.replyDiv {
+    width: 80%;
+    margin-left: 15%;
+    /* margin: 3% 0 0 0;  */
+    /* border-radius: 20px; */
+    /* display: inline-flex; */
+}
+
+.replyTextDiv {
+    margin-top: 1rem;
+    border-top: 0.5px solid var(--white);
+    padding-top: 1rem;
+    display: none;
+}
+
+
+
+.signBtn {
+    height: 100%;
+    width: auto;
+    display: inline-flex;
+    background-color: var(--black);
+    border: var(--orange) 2px solid;
+    padding: 2.5px 12.5px;
+    border-radius: 5px;
+    transition: all 0.1s ease;
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    text-decoration: none;
+    color: var(--orange);
+    transition: color 0.1s;
+}
+
+    .signBtn i {
+        color: var(--white);
+    }
+
+    .signBtn:hover {
+        color: var(--white);
+    }
+
+    .signBtn:hover {
+        background-color: var(--brown);
+        border: var(--orange) 2px solid;
+    }
+
+    .signBtn p {
+        margin-right: 1rem;
+    }
+/*會員刪除編輯權限*/
+#editA, #deleteA {
+    color: var(--deepBlue);
+    text-decoration: none;
+}
+
+    #editA:hover, #deleteA:hover {
+        color: var(--orange);
+        cursor: pointer;
+    }
+
+#organizerNickname {
+    color: var(--deepBlue);
+}
+
+#organizerIntro {
+    color: var(--deepBlue);
+}
+
+/*10/23James加的*/
+.myModalHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.progress:hover {
+    cursor: pointer;
+}

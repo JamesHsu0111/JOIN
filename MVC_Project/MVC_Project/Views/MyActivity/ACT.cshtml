@@ -1,0 +1,216 @@
+﻿@model MVC_Project.Models.HomePageViewModel
+@using Microsoft.AspNetCore.Http
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JO!N</title>
+    <link rel="icon" href="~/IMG/小黃人.png" type="image/png" />
+    <!-- Font Awesome套件引入 -->
+    <script src="https://kit.fontawesome.com/2bfbd4ef35.js" crossorigin="anonymous"></script>
+    <!-- 引入 Bootstrap 的 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <!-- 引入 Bootstrap 的 JavaScript 和相依的 Popper.js 和 jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- css連結，確保在Bootsrap之下 -->
+    <link rel="stylesheet" href="~/css/ACT.css" />
+    <!-- moving letter特效引入 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+
+</head>
+
+<body>
+    <!-- 回到網頁頂端設計 -->
+    <div id="scroll-to-top" class="hidden">
+        <a href="#top">
+            <div class="homeicon-container">
+                <i class="fa-solid fa-house fa-xl" style="color: var(--white);"></i>
+            </div>
+        </a>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <section class="actselect">
+        <div class="centered-container">
+            <div class="topnav">
+                @foreach (var activity in Model.Activities)
+                {
+                }
+                <div class="swi">
+                    <div class="cktoggle">
+                        <input type="checkbox" class="cktoggle_checkbox" id="cktoggle_id2" checked>
+                        <label class="cktoggle_label" for="cktoggle_id2">
+                            <span class="cktoggle_inner"></span>
+                            <span class="cktoggle_circle"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <a href="/MyActivity/ACT?page=@Model.CurrentPage&category=登山">登山</a>
+                <a href="/MyActivity/ACT?page=@Model.CurrentPage&category=潛水">潛水</a>
+                <a href="/MyActivity/ACT?page=@Model.CurrentPage&category=露營">露營</a>
+                <a href="/MyActivity/ACT?page=@Model.CurrentPage&category=溯溪">溯溪</a>
+                <a href="/MyActivity/ACT?page=@Model.CurrentPage&category=其他">其他</a>
+
+
+            </div>
+        </div>
+
+    </section>
+
+    <br>
+    <br>
+    <!-- 方塊們 -->
+    <div class="card-div">
+        <section class="cards">
+            @foreach (var activity in Model.Activities)
+            {
+                <article class="card">
+                    <div class="card__info-hover">
+                        @* 先判斷有沒有登入 *@
+                        @if (Context.Session.GetString("UserId") != null)
+                        {
+                            @* 判斷此使用者是否有收藏載入到首頁的活動 *@
+                            @if (ViewBag.LikedActivityIds.Contains(@activity.ActivityID))
+                            {
+                                <i class="fa-solid fa-envelope-circle-check fa-2xl vote-icon" data-activityid="@activity.ActivityID"></i>
+                            }
+                            else
+                            {
+                                <i class="fa-solid fa-envelope-open-text fa-2xl vote-icon" data-activityid="@activity.ActivityID"></i>
+                            }
+                        }
+                        else
+                        {
+                            <i class="fa-solid fa-envelope-open-text fa-2xl vote-icon disabled-icon" data-activityid="@activity.ActivityID"></i>
+                            <span class="custom-title">登入後可點擊</span>
+                        }
+                    </div>
+
+                    <div class="card__img" style="background-image: url('@activity.PhotoPath')"></div>
+                    <a href="/Activity/Index/@activity.ActivityID" class="card_link">
+                        <div class="card__img--hover" style="background-image: url('@activity.PhotoPath')"></div>
+                    </a>
+                    @*<div class="category-box">官方活動</div>*@
+                    <span class="card__VoteDate-text">投票日：<span style="color: var(--brown)">@activity.VoteDate?.ToString("M")</span></span>
+                    <div class="card__info">
+                        <span class="card__category">@activity.Category</span>
+                        <h3 class="card__title">@activity.ActivityName</h3>
+                        @if (Context.Session.GetString("UserId") != null)
+                        {
+                            @if (ViewBag.LikedActivityIds.Contains(@activity.ActivityID))
+                            {
+                                <span class="card__liked-text">已取得投票資格</span>
+                            }
+                            else { }
+                        }
+                        else
+                        { }
+                        <span class="card__ExpectedMonth">@activity.ExpectedDepartureMonth?.ToString("yyyy-MMM")活動</span>
+                    </div>
+                </article>
+            }
+        </section>
+    </div>
+
+    @*個人*@
+
+    @* <div class="card-div">
+        <section class="cards">
+            @foreach (var groups in @Model.Groups)
+            {
+                <article class="card" data-groupid="@groups.GroupID">
+                    <div class="card__info-hover">
+                        <div class="card__clock-info">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1.25em" viewBox="0 0 448 512" class="card__clock">
+                                <path d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64
+                  64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24
+                  24V64H152V24zM48 192H400V448c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V192z" />
+                            </svg>
+                            <span class="card__time">天數：@groups.DurationInDays 天</span>
+                        </div>
+                    </div>
+                    <div class="card__img" style="background-image: url('data:image/png;base64,@Convert.ToBase64String(groups.PhotoData)');"></div>
+                    <a href="/Grouppage/grouppage/@groups.GroupID" class="card_link">
+                        <div class="card__img--hover" style="background-image: url('data:image/png;base64,@Convert.ToBase64String(groups.PhotoData)');"></div>
+                    </a>
+                    @* <div class="category-box">個人揪團</div> *@
+                    @* <div class="card__info">
+                        <span class="card__category">@groups.GroupCategory</span>
+                        <h3 class="card__title">@groups.GroupName</h3>
+                        <p class="card__period">@groups.StartDate?.ToString("yyyy-MM-dd") ~ @groups.EndDate?.ToString("yyyy-MM-dd")</p>
+                        <span class="card__by">主揪<a href="#" class="card__author" title="author"> @groups.Nickname</a></span>
+                    </div>
+                </article>
+            }
+        </section>
+    </div> *@
+
+ 
+    <br>
+    <br>
+    <!-- 分頁 -->
+    <div class="container">
+        <nav aria-label="Page navigation example" id="nav-page">
+            <ul class="pagination justify-content-center" id="nav-pagi">
+                @if (ViewBag.TotalPages > 1)
+                {
+                    <li class="page-item @(ViewBag.PageNumber == 1 ? "disabled" : "")">
+                        <a class="page-link" href="@Url.Action("ACT", "MyActivity", new { page = ViewBag.PageNumber - 1 })" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+
+                    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                    {
+                        <li class="page-item @(i == ViewBag.PageNumber ? "active" : "")">
+                            <a class="page-link" href="@Url.Action("ACT", "MyActivity", new { page = i })">@i</a>
+                        </li>
+                    }
+
+                    <li class="page-item @(ViewBag.PageNumber == ViewBag.TotalPages ? "disabled" : "")">
+                        <a class="page-link" href="@Url.Action("ACT", "MyActivity", new { page = ViewBag.PageNumber + 1 })" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <!-- 如果只有一页，禁用前后按钮 -->
+                    <li class="page-item disabled">
+                        <span class="page-link" aria-hidden="true">&laquo;</span>
+                    </li>
+                    <li class="page-item active">
+                        <span class="page-link">1</span>
+                    </li>
+                    <li class="page-item disabled">
+                        <span class="page-link" aria-hidden="true">&raquo;</span>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+
+
+
+
+    <!-- JS連結 -->
+    <script src="~/js/ACTheart.js"></script>
+    <script src="~/js/ACT.js"></script>
+
+
+</body>
+
+
+
+</html>

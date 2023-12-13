@@ -1,0 +1,83 @@
+﻿@model IEnumerable<MVC_Project.Models.Group>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupContent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinAttendee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxAttendee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganizerNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OriginalActivity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupCategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupContent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinAttendee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxAttendee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrganizerNavigation.UserID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OriginalActivity.ActivityID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.GroupID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.GroupID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.GroupID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

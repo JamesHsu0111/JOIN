@@ -1,0 +1,71 @@
+﻿@model MVC_Project.Models.VoteRecord
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="~/css/SelectDate.css" rel="stylesheet">
+    <title>JO!N</title>
+    <link rel="icon" href="~/IMG/小黃人.png" type="image/png" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    @* SweetAlert *@
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+
+</head>
+
+<body>
+    <div id="container1">
+        <form asp-action="SelectDate" asp-controller="VoteRecords" method="post" class="login" id="login">
+            <div class="header1">
+                <h1>您好,親愛的會員</h1>
+                <p style="font-size: 21px;">當您在投票截止日之前，都可以編輯您最適合的時間。</p>
+                <p style="font-size: 21px;">系統將根據最多人選擇的時段來安排活動出發日。</p>
+                <p style="font-size: 21px;">如果最終活動時間與您所選的時間不符，將不自動報名此活動。</p>
+                <p style="font-size: 21px;">但您可以再次考慮活動出發日，再決定是否報名。</p>
+                <p class="h1" style="display:flex; justify-content: flex-end; color: var(--heart); font-size: 1.5rem; font-weight: 600; ">@ViewBag.RemainingDays</p>
+                
+
+
+                <div class="selectDateContainer">
+                    @if (ViewBag.Dates != null)
+                    {
+                        foreach (var date in ViewBag.Dates)
+                        {
+                            <li class="Cli">
+                                <label style="font-size: 30px;" for="@date.ToString("yyyy-MM-dd")">
+                                    <input type="radio" id="@date.ToString("yyyy-MM-dd")" name="VoteResult" value="@date.ToString("yyyy-MM-dd")">
+                                    @date.ToString("yyyy-MM-dd") ~ @(date.AddDays(1).ToString("yyyy-MM-dd"))
+                                </label>
+                            </li>
+                        }
+                    }
+                    else
+                    {
+                        <li>沒有可用的日期</li>
+                    }
+
+                    <!-- 設置一個隱藏的input，用於存儲該會員在此活動的投票選項 -->
+                    <input type="hidden" id="memberVote" value="">
+
+                </div>
+            </div>
+            <!-- 添加按鈕容器 -->
+            <div class="button-container">
+                <button class="button" type="submit" style="font-size: 20px;" value="Create">提交</button>
+            </div>
+
+            <div class="register-link">
+                <a asp-controller="Member" asp-action="Registration">
+                    <span onclick="show_hide()">返回會員中心</span>
+                </a>
+            </div>
+        </form>
+    </div>
+</body>
+
+<script src="~/js/SelectDate.js"></script>
+
+</html>

@@ -1,0 +1,61 @@
+﻿@model MVC_Project.Models.MyActivity
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>MyActivity</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ActivityID" />
+            <div class="form-group">
+                <label asp-for="ActivityName" class="control-label"></label>
+                <input asp-for="ActivityName" class="form-control" />
+                <span asp-validation-for="ActivityName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SuggestedAmount" class="control-label"></label>
+                <input asp-for="SuggestedAmount" class="form-control" />
+                <span asp-validation-for="SuggestedAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActivityContent" class="control-label"></label>
+                <input asp-for="ActivityContent" class="form-control" />
+                <span asp-validation-for="ActivityContent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MinAttendee" class="control-label"></label>
+                <input asp-for="MinAttendee" class="form-control" />
+                <span asp-validation-for="MinAttendee" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VoteDate" class="control-label"></label>
+                <input asp-for="VoteDate" class="form-control" />
+                <span asp-validation-for="VoteDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpectedDepartureMonth" class="control-label"></label>
+                <input asp-for="ExpectedDepartureMonth" class="form-control" />
+                <span asp-validation-for="ExpectedDepartureMonth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

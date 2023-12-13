@@ -1,0 +1,193 @@
+﻿@using Microsoft.AspNetCore.Http
+@model List<MVC_Project.Models.responseActivity>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Category"] = Model[0].Category;
+    ViewData["ActivityName"] = Model[0].ActivityName;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JO!N</title>
+    <link rel="icon" href="~/IMG/小黃人.png" type="image/png" />
+
+
+    <!-- Font Awesome套件引入 -->
+    <script src="https://kit.fontawesome.com/2bfbd4ef35.js" crossorigin="anonymous"></script>
+
+
+    <!-- 引入 Bootstrap 的 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+
+    <!-- css連結 -->
+    <link rel="stylesheet" href="~/css/ActivityPage.css" />
+
+    <!-- 引入 Bootstrap 的 JavaScript 和相依的 Popper.js 和 jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+            crossorigin="anonymous"></script>
+
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.all.min.js"
+            integrity="sha256-S/HO+Ru8zrLDmcjzwxjl18BQYDCvFDD7mPrwJclX6U8=" crossorigin="anonymous"></script>
+    <!-- sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<body>
+    <input type="hidden" id="currentUserId" value="@Context.Session.GetString("UserId")" />
+
+    <!-- 導覽列設計 -->
+    <!-- 活動頁面設計 -->
+    <div class="vote-div">
+        @if (ViewBag.likedActivity == "noReturn")
+        {
+            <div class="voteicon-container">
+                <i class="fa-solid fa-envelope-open-text fa-2xl disabled-icon vote-icon"></i>
+            </div>
+            <span class="custom-title">登入後可點擊</span>
+        }
+        else
+        {
+            if (ViewBag.likedActivity == "false")
+            {
+                <div class="voteicon-container">
+                    <i class="fa-solid fa-envelope-open-text fa-2xl vote-icon" data-activityid=@Model[0].ActivityID></i>
+                </div>
+                <span class="custom-title">取得投票資格</span>
+
+
+
+            }
+            else
+            {
+                <div class="voteicon-container">
+                    <i class="fa-solid fa-envelope-circle-check fa-2xl vote-icon" style="padding-left: 3px;" data-activityid="@Model[0].ActivityID"></i>
+                </div>
+                <span class="custom-title">已取得投票資格</span>
+
+
+            }
+        }
+    </div>
+
+
+
+
+
+
+
+    <!-- 輪播圖片 -->
+    <div class="mycontainer">
+        <div class="carouselDiv-forIndex">
+            <div class="carousel-container position-relative  col-lg-8" id="pictureDiv">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-slide-number="0">
+                            <img src="@Model[0].PhotoPath" class="d-block w-100" alt="..." data-type="image"
+                                 data-toggle="lightbox" data-gallery="example-gallery">
+                        </div>
+                        <div class="carousel-item" data-slide-number="1">
+                            <img src="@Model[1].PhotoPath" class="d-block w-100" alt="..." data-type="image"
+                                 data-toggle="lightbox" data-gallery="example-gallery">
+                        </div>
+                        <div class="carousel-item" data-slide-number="2">
+                            <img src="@Model[2].PhotoPath" class="d-block w-100" alt="..." data-type="image"
+                                 data-toggle="lightbox" data-gallery="example-gallery">
+                        </div>
+                        <div class="carousel-item" data-slide-number="3">
+                            <img src="@Model[3].PhotoPath" class="d-block w-100" alt="..." data-type="image"
+                                 data-toggle="lightbox" data-gallery="example-gallery">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Navigation -->
+                <div id="carousel-thumbs" class="carousel slide " data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row mx-0">
+                                <div id="carousel-selector-0" class="thumb col-sm-1 col-lg-3 px-1 py-2 selected"
+                                     data-target="#myCarousel" data-slide-to="0">
+                                    <img src="@Model[0].PhotoPath" class="img-fluid" alt="...">
+                                </div>
+                                <div id="carousel-selector-1" class="thumb col-sm-1 col-lg-3 px-1 py-2" data-target="#myCarousel"
+                                     data-slide-to="1">
+                                    <img src="@Model[1].PhotoPath" class="img-fluid" alt="...">
+                                </div>
+                                <div id="carousel-selector-2" class="thumb col-sm-1 col-lg-3 px-1 py-2" data-target="#myCarousel"
+                                     data-slide-to="2">
+                                    <img src="@Model[2].PhotoPath" class="img-fluid" alt="...">
+                                </div>
+                                <div id="carousel-selector-3" class="thumb col-sm-1 col-lg-3 px-1 py-2" data-target="#myCarousel"
+                                     data-slide-to="3">
+                                    <img src="@Model[3].PhotoPath" class="img-fluid" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- 活動內容 -->
+    <div class="container" style="margin-top: 2%; margin-bottom: 2%;">
+        <div class="row" style="gap: 50px; display: flex; justify-content: center;">
+            <div class="col-7 activity_about">
+                <h1>活動介紹</h1>
+                <h3>@Model[0].ActivityContent </h3>
+
+
+            </div>
+
+            <div class="col-5 activity_info">
+                <h1>活動資訊</h1>
+                <table>
+                    <tr>
+                        <td>成團人數下限：</td>
+                        <td>@Model[0].MinAttendee</td>
+                    </tr>
+                    <tr>
+                        <td>投票日：</td>
+                        <td>@Model[0].VoteDate?.ToString("yyyy-MM-dd")</td>
+                    </tr>
+                    <tr>
+                        <td>建議攜帶金額：</td>
+                        <td>@Model[0].SuggestedAmount?.ToString("F0")</td>
+                    </tr>
+                    <tr>
+                        <td>預計出發月份：</td>
+                        <td>@Model[0].ExpectedDepartureMonth?.ToString("yyyy-MM")</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+<!-- JS連結 -->
+
+<script src="~/js/ActivityPage.js"></script>
+
+
+</html>

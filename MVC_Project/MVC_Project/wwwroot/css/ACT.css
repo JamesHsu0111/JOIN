@@ -1,0 +1,589 @@
+﻿/* 字體 */
+/* 分支修改測試 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@200&family=Roboto:ital,wght@1,300&display=swap");
+
+/* "米字號"被用來選取HTML文檔中的所有元素 */
+* {
+    font-family: "Noto Sans TC", sans-serif;
+    font-family: "Roboto", sans-serif;
+    scroll-behavior: smooth;
+    /*當使用超連結時，頁面會平滑滾動到目標位置。 */
+}
+
+/* 主題顏色宣告 */
+:root {
+    --black: #000000;
+    --deepBlue: #14213d;
+    --blue: #416ac2;
+    --orange: #fca311;
+    --lightGray: #e5e5e5;
+    --white: #ffffff;
+    --brown: #AD7D52;
+    --heart: #B44163;
+    --lightBlue-bg: rgba(45, 68, 119, 0.486);
+}
+
+/* 頁面背景色 */
+body {
+    background-color: var(--deepBlue);
+    color: var(--white);
+}
+
+/* 回到網頁頂端圖示設計 */
+#scroll-to-top {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+    z-index: 10;
+}
+
+    /* 防止超連結跑出底線 */
+    #scroll-to-top a {
+        text-decoration: none;
+    }
+
+    #scroll-to-top .homeicon-container {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: solid 3px var(--lightGray);
+        background-color: var(--deepBlue);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all .3s;
+    }
+
+        #scroll-to-top .homeicon-container:hover {
+            transform: scale(1.15);
+        }
+
+.hidden {
+    display: none;
+}
+
+/* 導覽列 */
+.header {
+    background-color: var(--lightBlue-bg);
+}
+
+.navbar {
+    margin-left: 10%;
+    margin-right: 10%;
+    color: var(--white);
+    font-size: 1.75rem;
+    font-weight: bolder;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#nav-pagi {
+    --bs-pagination-active-bg: var(--orange);
+    --bs-pagination-active-border-color: var(--orange);
+    --bs-pagination-color: var(--deepBlue);
+    --bs-pagination-bg: var(--white);
+    --bs-pagination-font-size: 1.2rem;
+}
+
+
+#nav-page {
+    padding-left: 0px;
+    background-color: transparent;
+}
+
+/* 活動導覽設計 */
+.activity-container {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.activity-title {
+    margin-bottom: 5%;
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.activity-content {
+    margin-top: 5%;
+}
+
+.activity-small-title {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+/* cards */
+
+/* 外面多包一個div讓方塊們保持置中 */
+.card-div {
+    margin-top: 5%;
+   /* display: flex;*/
+    justify-content: center;
+    align-items: center;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card-wrapper {
+    width: 100%;
+}
+
+/* 活動分類標籤 */
+.category-box {
+    border: var(--lightGray) 1px solid;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: var(--brown);
+    color: var(--white);
+    padding: 5px 10px;
+    border-radius: 5px 12px 5px 5px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    z-index: 1;
+}
+
+/*.card--1 .card__img,
+.card--1 .card__img--hover {
+    background-image: url('https://picsum.photos/1260/750?random=1');
+}
+
+.card--2 .card__img,
+.card--2 .card__img--hover {
+    background-image: url('https://picsum.photos/1260/750?random=2');
+}
+
+.card--3 .card__img,
+.card--3 .card__img--hover {
+    background-image: url('https://picsum.photos/1260/750?random=3');
+}
+
+.card--4 .card__img,
+.card--4 .card__img--hover {
+    background-image: url('https://picsum.photos/1260/750?random=4');
+}
+
+.card--5 .card__img,
+.card--5 .card__img--hover {
+    background-image: url('https://picsum.photos/1260/750?random=5');
+}
+
+.card--6.card__img,
+.card--6 .card__img--hover {
+    background-image: url('https://picsum.photos/1260/750?random=6');
+}
+
+.card--7 .card__img,
+.card--7 .card__img--hover {
+    background-image: url('https://picsum.photos/1260/750?random=7');
+}
+
+.card--8 .card__img,
+.card--8 .card__img--hover {
+    background-image: url('https://picsum.photos/1260/750?random=8');
+}
+
+.card--9 .card__img,
+.card--9 .card__img--hover {
+    background-image: url('https://picsum.photos/1260/750?random=9');
+}
+*/
+
+.vote-icon:hover {
+    cursor: pointer;
+}
+
+.card__clock {
+    width: 35px;
+    height: 35px;
+    vertical-align: middle;
+    fill: var(--deepBlue);
+    padding-bottom: 3px;
+}
+
+.card__time {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--deepBlue);
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.card__clock-info {
+    float: right;
+}
+
+.card__img {
+    visibility: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 300px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.card__info-hover {
+    position: absolute;
+    padding: 16px;
+    width: 100%;
+    opacity: 0;
+}
+
+    /*未登入狀態下的愛心icon*/
+    .card__info-hover .disabled-icon {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+/*未登入點擊提醒*/
+.custom-title {
+    visibility: hidden;
+    display: block;
+    margin-top: 10px;
+    opacity: 0.8;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.vote-icon:hover + .custom-title {
+    visibility: visible;
+}
+
+/*這段是改啥的?*/
+.vote-icon.solid {
+    opacity: 1;
+    visibility: visible;
+}
+
+.card__img--hover {
+    transition: 0.2s all ease-out;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    position: absolute;
+    height: 300px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    top: 0;
+}
+
+.card {
+    transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+    background-color: #fff;
+    width: 100%;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+}
+
+    .card:hover {
+        box-shadow: 0px 30px 40px -8px rgba(244, 242, 242, 0.466);
+        transform: scale(1.10, 1.10);
+    }
+
+.card__info {
+    z-index: 2;
+    background-color: var(--white);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    padding: 16px 24px 24px 24px;
+}
+
+.liked-text {
+    color: var(--heart);
+    font-size: 1.3rem;
+    font-weight: bold;
+    position: absolute;
+    bottom: 5px;
+    right: 13px;
+}
+
+.card__liked-text {
+    color: var(--heart);
+    font-size: 1.3rem;
+    font-weight: bold;
+    position: absolute;
+    bottom: 5px;
+    right: 13px;
+}
+
+.card__category {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: var(--black);
+}
+
+.card__title {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.card__by {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card__author {
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--brown);
+}
+
+.card:hover .card__img--hover {
+    height: 100%;
+    opacity: 0.3;
+}
+
+.card:hover .card__info {
+    background-color: transparent;
+    position: relative;
+}
+
+.card:hover .card__info-hover {
+    opacity: 1;
+    z-index: 10;
+}
+
+.card__ExpectedMonth {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: var(--black);
+}
+
+.card__VoteDate-text {
+    position: absolute;
+    bottom: 28%;
+    right: 10px;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: var(--black);
+    z-index: 1111;
+}
+
+.read-more-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: var(--deepBlue);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .read-more-button:hover {
+        background-color: var(--blue);
+    }
+
+.blue-btn {
+    width: fit-content;
+    padding: 2.5px 20.5px;
+    font-size: 1.6rem;
+    font-weight: bolder;
+    border-radius: 15px;
+    background-color: var(--deepBlue);
+    transition: all 0.1s ease;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+    .blue-btn:hover {
+        cursor: pointer;
+        border: var(--deepBlue) 2px solid;
+        background-color: var(--white);
+    }
+
+.blue-btn-text-style {
+    color: var(--white);
+    text-decoration: none;
+    transition: all 0.1s ease;
+}
+
+    .blue-btn-text-style:hover {
+        color: var(--deepBlue);
+    }
+
+.actselect {
+    float: left;
+    width: 80%;
+    margin-top: auto;
+}
+
+.topnav {
+    background-color: #14213d;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding-left: 360px;
+}
+
+    .topnav .cktoggle {
+        margin-left: auto;
+    }
+
+    /* Style the links inside the navigation bar */
+    .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 1.8rem;
+        border-bottom: 2px solid transparent;
+    }
+
+        .topnav a:hover {
+            border-bottom: 2px solid #fca311;
+        }
+
+
+        .topnav a.active {
+            border-bottom: 2px solid #fca311;
+        }
+
+               
+       .pagination {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+       .pagination a {
+          font-size: 1.3rem;
+          float: left;
+          padding: 8px 16px;
+          text-decoration: none;
+        }
+
+        .pagination a.active {
+            background-color: #14213d ;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+            border-radius: 5px;
+        }
+
+.swi {
+    float: right;
+    width: 17%;
+    margin-top: -55px;
+}
+
+.cktoggle {
+    position: absolute;
+    width: 160px; /* 全按鈕寬度 */
+}
+
+/* 原按鈕樣式隱藏 */
+.cktoggle_checkbox {
+    display: none;
+}
+
+/* 主外框 */
+.cktoggle_label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid #416ac2;
+    border-radius: 36px;
+}
+
+/* 背景 */
+.cktoggle_inner {
+    display: block;
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+
+    /* 背景 */
+    .cktoggle_inner:before, .cktoggle_inner:after {
+        display: block;
+        float: left;
+        width: 50%; /* before和after各佔50% */
+        height: 50px; /* 全按鈕高度 */
+        line-height: 50px; /*文字高度 */
+        font-size: 1.6rem;
+        color: white;
+        font-family: Trebuchet, Arial, sans-serif;
+        font-weight: bold;
+        box-sizing: border-box;
+    }
+
+    /* ON */
+    .cktoggle_inner:before {
+        content: "報名中";
+        padding-left: 30px;
+        background-color: #14213d;
+        color: #FFFFFF;
+        text-align: left;
+    }
+
+    /* OFF */
+    .cktoggle_inner:after {
+        content: "    投票中";
+        padding-right: 30px;
+        background-color: #EEEEEE;
+        color: #14213d;
+        text-align: right;
+    }
+
+/* 上面的小圓 */
+.cktoggle_circle {
+    display: block;
+    width: 35px; /* 小圓寬度 */
+    height: 35px; /* 小圓高度 */
+    margin: auto; /* 小圓距離上下左右margin */
+    background: white;
+    position: absolute;
+    top: 10px; /* 距離上邊緣 左右是和一開始的位置有關 */
+    right: 118px; /* uncheck時 小圓移動到離右側距離XXpx位置 */
+    border: 3px solid #416ac2; /* 小圓外框顏色 */
+    border-radius: 100px;
+    transition: right 0.3s ease-in 0s;
+}
+
+/* label和背景的移動 */
+.cktoggle_checkbox:checked + .cktoggle_label .cktoggle_inner {
+    margin-left: 0;
+}
+
+/* label和上面小圓的移動 */
+.cktoggle_checkbox:checked + .cktoggle_label .cktoggle_circle {
+    right: 10px;
+}
+

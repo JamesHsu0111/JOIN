@@ -1,0 +1,142 @@
+﻿@model MVC_Project.Models.MemberUseViewModel
+    
+
+@{
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+
+
+<div class="container" id="likeR">
+    <div class="row row-cols-2">
+        @foreach (var group in ViewBag.OrganizedGroups)
+        {
+            <div class="col">
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="/Grouppage/grouppage/@group.GroupID">@group.GroupName</a></h3>
+                        <p class="card-text">出團日期:@group.EndDate?.ToString("yyyy-MM-dd")</p>
+                        <div class="card-button-container">
+                            @*<button class="blue-btn blue-btn-text-style edit-btn" data-action="Edit" data-controller="Groups" data-id="@group.GroupID">
+                                編輯</button>*@
+                            <a class="abutton blue-btn blue-btn-text-style edit-btn" href="@Url.Action("myEdit", "Groups", new { GroupID = @group.GroupID })">
+                                編輯
+                            </a>
+
+                            
+
+                            <button class="blue-btn blue-btn-text-style delete-btn" data-name="@group.GroupName" data-id="@group.GroupID" onclick="confirmDelete(this)">
+                                刪除活動
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="container">
+    <nav aria-label="Page navigation example" id="nav-page">
+        <ul class="pagination justify-content-center" id="nav-pagi">
+            <li class="page-item @(ViewBag.PageNumber == 1 ? "disabled" : "")">
+                <a class="page-link" href="@Url.Action("MyGroups", "Member", new { page = ViewBag.PageNumber - 1 })" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                <li class="page-item @(i == ViewBag.PageNumber ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("MyGroups", "Member", new { page = i })">@i</a>
+                </li>
+            }
+
+            <li class="page-item @(ViewBag.PageNumber == ViewBag.TotalPages ? "disabled" : "")">
+                <a class="page-link" href="@Url.Action("MyGroups", "Member", new { page = ViewBag.PageNumber + 1 })" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<script>
+    function confirmDelete(btn) {
+        var groupId = btn.getAttribute("data-id");
+        var groupName = btn.getAttribute("data-name");
+
+        swal({
+            title: "確定要刪除此活動嗎？",
+            text: "請輸入活動名稱以確認刪除：",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            content: "input"
+        })
+            .then((value) => {
+                if (value == groupName) {
+                    // 使用AJAX調用DeleteGroup方法
+                    $.post("/Member/DeleteGroup", { GroupID: groupId }, function (data) {
+                        if (data.success) {
+                            swal({
+                                title: "成功！",
+                                text: "已成功刪除活動！",
+                                icon: "success",
+                                buttons: false,
+                                timer: 1000,
+                                timerProgressBar: true
+                            }).then(() => {
+                                // 刷新頁面或刪除該活動的元素
+                                location.reload();
+                            });
+                        } else {
+                            swal({
+                                title: "錯誤！",
+                                text: "刪除過程中發生錯誤！",
+                                icon: "error",
+                                buttons: false,
+                                timer: 1000,
+                                timerProgressBar: true
+                            });
+                        }
+                    });
+                } else if (value === null) {
+                    // 使用者點擊了取消按鈕，不執行任何操作
+                } else {
+                    swal({
+                        title: "錯誤！",
+                        text: "輸入錯誤活動名稱，請重新操作",
+                        icon: "error",
+                        buttons: false,
+                        timer: 1000,
+                        timerProgressBar: true
+                    });
+                }
+            });
+    }
+
+
+    // $('.delete-btn').click(function () {
+    //     var groupId = $(this).data('id');
+    //     var groupName = $(this).data('name');
+
+    //     var userEnteredName = prompt("請輸入您要刪除的活動名稱以確認操作：", "");
+    //     if (userEnteredName === groupName) {
+    //         var result = confirm("確定要刪除此活動嗎？");
+    //         if (result) {
+    //             $.post("/Member/DeleteGroup", { GroupID: groupId }, function () {
+    //                 location.reload();
+    //             });
+    //         }
+    //     } else {
+    //         alert("輸入的活動名稱不正確，操作已取消。");
+    //     }
+    // });
+</script>
+
+@*<script src="~/js/Group.js"></script>*@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+

@@ -1,0 +1,72 @@
+@* 查找目前使用者 *@
+@using Microsoft.AspNetCore.Http
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JO!N</title>
+    <link rel="icon" href="~/IMG/小黃人.png" type="image/png" />
+
+    <!-- Font Awesome套件引入 -->
+    <script src="https://kit.fontawesome.com/2bfbd4ef35.js" crossorigin="anonymous"></script>
+
+
+    <!-- 引入 Bootstrap 的 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+
+    <!-- css連結 -->
+    <link rel="stylesheet" href="~/css/loggedbar.css" />
+
+    <!-- 引入 Bootstrap 的 JavaScript 和相依的 Popper.js 和 jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+</head>
+
+<body>
+    @* 檢查是哪個使用者 *@
+    <input type="hidden" id="currentUserId" value="@Context.Session.GetString("UserId")" />
+
+    <!-- 導覽列設計 -->
+    <!-- 通知下拉 -->
+    <div class="col-auto">
+        <ul class="nav nav-pills nav-justified">
+            <li class="nav-item notification-wrapper">
+                <button class="notification">
+                    <i class="fa-solid fa-bell fa-lg" style="color: #ffffff;"></i>
+                    <span class="notification--num"></span>
+                </button>
+                <div class="notification-popup scrollbar-primary">
+                    <div class="notification-popup__header">
+                        <h3>通知</h3>
+                        <button><i class="fa-solid fa-check read-all"> 全部已讀</i></button>
+                    </div>
+                    <div class="notification-empty">
+                        <i class="fa-regular fa-comment-dots fa-2xl" style="color: var(--blue)"></i>
+                        <h3>暫無通知</h3>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 會員中心 -->
+    <div class="col-auto nav-signed">
+        <a class="singed-style" asp-controller="member" asp-action="member">會員中心</a>
+    </div>
+    <div class="col-auto nav-logout">
+        <a class="logout-style" asp-controller="account" asp-action="logout">
+            <i class="fa-solid fa-right-from-bracket"></i>
+        </a>
+    </div>
+
+</body>
+
+</html>
