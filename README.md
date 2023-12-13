@@ -1,0 +1,2 @@
+# JOIN
+Outdoor activity platform
